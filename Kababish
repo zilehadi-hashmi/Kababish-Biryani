@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html> 
+<head>
+<title>
+Hi Graphics
+</title>
+<style>
+body{background-color:grey;}
+h1{color:green;}
+p{color:yellow;}
+button{background-color:grey;color:black;}
+</style>
+</head>
+<body>
+<h1>
+Kababish Biryani 
+</h1>
+<p>
+Taste Of Tradition
+</p>
+<img src="https://images.deliveryhero.io/image/fd-pk/pk-logos/apvk-logo.jpg"width"100"
+> 
+<button>
+    Buy Now
+
+</button>
+</body>
