@@ -1,6 +1,15 @@
 <!DOCTYPE html> 
 <html lang="en"> 
   <head>
+    <title>Simple Shopping Cart</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    .product { margin-bottom: 15px; }
+    .cart { margin-top: 30px; border-top: 2px solid #ccc; padding-top: 20px; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 10px; border-bottom: 1px solid #ccc; }
+    button { cursor: pointer; }
+  </style>
     
     <style>
   </head>
@@ -12,7 +21,81 @@ background-repeat: no-repeat; <meta charset="UTF-8">
     </style>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food Menu</title> <link rel="stylesheet" href="style.css"> 
-  </head> <body> 
+  </head> 
+  <body> 
+    <h2>Products</h2>
+
+<div class="product">
+  <span>Product A - $10</span>
+  <button onclick="addToCart('Product A', 10)">Add to Cart</button>
+</div>
+
+<div class="product">
+  <span>Product B - $20</span>
+  <button onclick="addToCart('Product B', 20)">Add to Cart</button>
+</div>
+
+<hr>
+
+<div class="cart">
+  <h2>Your Cart</h2>
+  <table id="cartTable"></table>
+  <h3>Total: $<span id="total">0</span></h3>
+</div>
+
+<script>
+  let cart = [];
+
+  function addToCart(name, price) {
+    const existing = cart.find(item => item.name === name);
+    if (existing) {
+      existing.qty++;
+    } else {
+      cart.push({ name, price, qty: 1 });
+    }
+    renderCart();
+  }
+
+  function changeQty(name, amount) {
+    const item = cart.find(i => i.name === name);
+    if (!item) return;
+
+    item.qty += amount;
+    if (item.qty <= 0) {
+      cart = cart.filter(i => i.name !== name);
+    }
+    renderCart();
+  }
+
+  function renderCart() {
+    const table = document.getElementById("cartTable");
+    const totalElem = document.getElementById("total");
+
+    table.innerHTML = `
+      <tr><th>Item</th><th>Qty</th><th>Price</th><th>Action</th></tr>
+    `;
+
+    let total = 0;
+
+    cart.forEach(item => {
+      total += item.price * item.qty;
+
+      table.innerHTML += `
+        <tr>
+          <td>${item.name}</td>
+          <td>${item.qty}</td>
+          <td>$${item.price * item.qty}</td>
+          <td>
+            <button onclick="changeQty('${item.name}', 1)">+</button>
+            <button onclick="changeQty('${item.name}', -1)">-</button>
+          </td>
+        </tr>
+      `;
+    });
+
+    totalElem.textContent = total;
+  }
+</script>
     
     <nav class="navbar"> <h2 class="logo">Kababish Biryani </h2>
     
