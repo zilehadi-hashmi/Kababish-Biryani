@@ -1,71 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Kababish Biryani</title>
+</div>
 
 
-<style>
-body {
-font-family: Arial, sans-serif;
-padding: 20px;
-max-width: 900px;
-margin: auto;
-background-color: orange;
-color: black;
+<script>
+let cart = [];
+
+
+function addToCart(name, price) {
+const item = cart.find(i => i.name === name);
+if (item) item.qty++;
+else cart.push({ name, price, qty: 1 });
+renderCart();
 }
 
 
-.hero {
-background: url("https://images.unsplash.com/photo-1504674900247-0877df9cc836") center/cover;
-padding: 60px;
-border-radius: 10px;
-text-align: center;
-color: white;
-margin-bottom: 30px;
-}
-.hero h1 { font-size: 40px; }
-.hero p { font-size: 20px; margin-bottom: 10px; }
-
-
-.btn {
-background: yellow;
-padding: 10px 20px;
-border-radius: 8px;
-font-weight: bold;
-text-decoration: none;
-color: black;
+function changeQty(name, amount) {
+const item = cart.find(i => i.name === name);
+if (!item) return;
+item.qty += amount;
+if (item.qty <= 0) cart = cart.filter(i => i.name !== name);
+renderCart();
 }
 
 
-.menu-container {
-display: grid;
-grid-template-columns: repeat(2, 1fr);
-gap: 20px;
-margin-bottom: 40px;
+function renderCart() {
+const table = document.getElementById("cartTable");
+const totalEl = document.getElementById("total");
+
+
+table.innerHTML = `<tr><th>Item</th><th>Qty</th><th>Price</th><th>Action</th></tr>`;
+
+
+let total = 0;
+
+
+cart.forEach(item => {
+total += item.qty * item.price;
+table.innerHTML += `
+<tr>
+<td>${item.name}</td>
+<td>${item.qty}</td>
+<td>Rs.${item.price * item.qty}</td>
+<td>
+<button onclick="changeQty('${item.name}', 1)">+</button>
+<button onclick="changeQty('${item.name}', -1)">-</button>
+</td>
+</tr>
+`;
+});
+
+
+totalEl.textContent = total;
 }
+</script>
 
 
-.menu-card {
-background: white;
-padding: 15px;
-border-radius: 10px;
-text-align: center;
-box-shadow: 0 0 10px rgba(0,0,0,0.2);
-}
+<div class="container">
+<h2>Order Receiving Form</h2>
+<form>
+<label>Customer Name</label>
+<input type="text" placeholder="Enter customer name" required />
 
 
-.menu-card img {
-width: 220px;
-border-radius: 10px;
-}
+<label>Product</label>
+<input type="text" placeholder="Product name" required />
 
 
-.price {
-font-weight: bold;
-display: block;
-margin: 10px 0;
-}
+<label>Quantity</label>
+<input type="number" min="1" placeholder="Quantity" required />
 
 
-button {
+<label>Notes</label>
+<textarea placeholder="Additional notes..."></textarea>
+
+
+<button type="submit">Submit Order</button>
+</form>
+</div>
+
+
+</body>
+</html>
+
