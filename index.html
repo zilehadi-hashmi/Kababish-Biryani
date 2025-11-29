@@ -1,18 +1,82 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Kababish Biryani</title>
+<script>
+let cart = [];
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-      max-width: 900px;
-      margin: auto;
-      background-color: orange;
-      color: black;
-    }
+
+function addToCart(name, price) {
+const item = cart.find(i => i.name === name);
+if (item) item.qty++;
+else cart.push({ name, price, qty: 1 });
+renderCart();
+}
+
+
+function changeQty(name, amount) {
+const item = cart.find(i => i.name === name);
+if (!item) return;
+item.qty += amount;
+if (item.qty <= 0) cart = cart.filter(i => i.name !== name);
+renderCart();
+}
+
+
+function renderCart() {
+const table = document.getElementById("cartTable");
+const totalEl = document.getElementById("total");
+
+
+table.innerHTML = `<tr><th>Item</th><th>Qty</th><th>Price</th><th>Action</th></tr>`;
+
+
+let total = 0;
+
+
+cart.forEach(item => {
+total += item.qty * item.price;
+table.innerHTML += `
+<tr>
+<td>${item.name}</td>
+<td>${item.qty}</td>
+<td>Rs.${item.price * item.qty}</td>
+<td>
+<button onclick="changeQty('${item.name}', 1)">+</button>
+<button onclick="changeQty('${item.name}', -1)">-</button>
+</td>
+</tr>
+`;
+});
+
+
+totalEl.textContent = total;
+}
+</script>
+
+
+<div class="container">
+<h2>Order Receiving Form</h2>
+<form>
+<label>Customer Name</label>
+<input type="text" placeholder="Enter customer name" required />
+
+
+<label>Product</label>
+<input type="text" placeholder="Product name" required />
+
+
+<label>Quantity</label>
+<input type="number" min="1" placeholder="Quantity" required />
+
+
+<label>Notes</label>
+<textarea placeholder="Additional notes..."></textarea>
+
+
+<button type="submit">Submit Order</button>
+</form>
+</div>
+
+
+</body>
+</html>
 
     /* Hero Section */
     .hero {
