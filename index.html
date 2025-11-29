@@ -34,40 +34,7 @@ background-repeat: no-repeat; <meta charset="UTF-8">
     <title>Food Menu</title> <link rel="stylesheet" href="style.css"> 
   </head> 
   <body> 
-    <h2>Products</h2>
-
-<div class="product">
-  <span>Biryani —Rs. 350</span>
-  <button onclick="addToCart('Biryani',Rs. 350)">Add to Cart</button>
-</div>
-<div class="product">
-  <span>Biryani — Rs.250</span>
-  <button onclick="addToCart('Biryani',Rs. 250)">Add to Cart</button>
-</div>
-<div class="product">
-  <span>Pasta  — Rs. 450</span>
-  <button onclick="addToCart('Pasta ', Rs.450)">Add to Cart</button>
-</div>
-    <div class="product">
-  <span>Pasta  — Rs. 300</span>
-  <button onclick="addToCart('Pasta ', Rs.300)">Add to Cart</button>
-</div>
-    <div class="product">
-  <span>Fried Rice —Rs. 450</span>
-  <button onclick="addToCart('Fried Rice', Rs.450)">Add to Cart</button>
-</div>
-     <div class="product">
-  <span>Fried Rice —Rs. 300</span>
-  <button onclick="addToCart('Fried Rice', Rs.300)">Add to Cart</button>
-</div>
-
-
-
-<div class="cart">
-  <h2>Your Cart</h2>
-  <table id="cartTable"></table>
-  <h3>Total: Rs.<span id="total">0</span></h3>
-</div>
+    
 
 <script>
   let cart = [];
@@ -236,7 +203,41 @@ background-repeat: no-repeat; <meta charset="UTF-8">
                 <span class="price">Rs.300</span>
               
               
-            </div>
+
+              <h2>Products</h2>
+
+<div class="product">
+  <span>Biryani —Rs. 350</span>
+  <button onclick="addToCart('Biryani',Rs. 350)">Add to Cart</button>
+</div>
+<div class="product">
+  <span>Biryani — Rs.250</span>
+  <button onclick="addToCart('Biryani',Rs. 250)">Add to Cart</button>
+</div>
+<div class="product">
+  <span>Pasta  — Rs. 450</span>
+  <button onclick="addToCart('Pasta ', Rs.450)">Add to Cart</button>
+</div>
+    <div class="product">
+  <span>Pasta  — Rs. 300</span>
+  <button onclick="addToCart('Pasta ', Rs.300)">Add to Cart</button>
+</div>
+    <div class="product">
+  <span>Fried Rice —Rs. 450</span>
+  <button onclick="addToCart('Fried Rice', Rs.450)">Add to Cart</button>
+</div>
+     <div class="product">
+  <span>Fried Rice —Rs. 300</span>
+  <button onclick="addToCart('Fried Rice', Rs.300)">Add to Cart</button>
+</div>
+
+
+
+<div class="cart">
+  <h2>Your Cart</h2>
+  <table id="cartTable"></table>
+  <h3>Total: Rs.<span id="total">0</span></h3>
+</div>
 
         </div>
     </section>
@@ -258,20 +259,10 @@ Copy code
 }
 
 body {
-    background: #f2f2f2;
-    color: #333;
+    background: #black;
+    color: #black;}
+ < body>
+  
 }
+  </html>
 
-/* NAVBAR */
-.navbar {
-    width: 100%;
-    padding: 20px 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #ff7b00;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-.navbar .logo { font-size: 28px; color: white; font-weight: bold; } .navbar ul { display: flex; list-style: none; } .navbar ul li { margin-left: 20px; } .navbar ul li a { text-decoration: none; color: white; font-size: 18px; transition: 0.3s; } .navbar ul li a:hover { color: #222; } /* HERO SECTION */ .hero { height: 65vh; background-image: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092'); background-size: cover; background-position: center; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: white; } .hero h1 { font-size: 3rem; margin-bottom: 10px; } .hero p { font-size: 1.2rem; margin-bottom: 20px; } .btn { background: #ff7b00; padding: 12px 25px; color: white; text-decoration: none; border-radius: 8px; font-size: 18px; transition: 0.3s; } .btn:hover { background: #e56a00; } /* MENU SECTION */ .menu-section { padding: 60px 40px; text-align: center; } .section-title { font-size: 2.5rem; color: #ff7b00; margin-bottom: 40px; } .menu-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; } .menu-card { background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: 0.3s; text-align: center; } .menu-card:hover { transform: scale(1.05); } .menu-card img { width: 100%; border-radius: 10px; margin-bottom: 15px; } .menu-card h3 { font-size: 1.4rem; margin-bottom: 10px; } .menu-card p { color: #555; margin-bottom: 10px; } .price { font-size: 1.3rem; font-weight: bold; color: #ff7b00; } /* FOOTER */ footer { background: #333; color: white; text-align: center; padding: 20px 0; margin-top: 50px; font-size: 1rem; } <meta charset="UTF-8"> <title>Vertical Menu</title> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"> <style> body {font-family: Arial, sans-serif; margin:0; background:#f4f4f4;} .sidebar {width:200px; background:#fff; padding:10px; box-shadow:2px 0 5px rgba(0,0,0,.1);} .logo {text-align:center; margin-bottom:15px;} .logo img {"https://www.bing.com/ck/a?!&&p=22f40fe7dbf438959ca2bddc986807d02a9bbfc169f967103896cf979ac63dbcJmltdHM9MTc2NDM3NDQwMA&ptn=3&ver=2&hsh=4&fclid=376a9322-88d1-6ffc-1c4f-851389a56edb&u=a1L2ltYWdlcy9zZWFyY2g_cT1rYWJhYmlzaCtiaXJ5YW5pK2pwZyZpZD0wQjg3QkFDNjc4OTg1REQ5MEVDNTIyRkVBMTk5NTcwM0Y0RjZGMEFBJkZPUk09SUFDRklS ",width:40px; height:40px; border-radius:50%;} .name { "Kebabish Biryani",text-align:center; font-weight:bold; margin:5px 0 10px;} .menu a { display:flex; align-items:center; gap:10px; padding:12px; color:#333; text-decoration:none; border-bottom:1px solid #eee; transition:.2s; } .menu a:hover {background:#e8e8e8;} .menu i {font-size:1.2em;} </style> <header> <h1>🍽️ Our Food Menu</h1> <p>Fresh • Delicious • Made with love</p> </header> <section class="menu"> <div class="menu-item"> <img src="https://via.placeholder.com/150" alt="Burger"> <h3>Classic Burger</h3> <p>Juicy beef patty with fresh veggies.</p> <span>$8.99</span> </div> <div class="menu-item"> <img src="https://via.placeholder.com/150" alt="Pizza"> <h3>Cheese Pizza</h3> <p>Smothered with mozzarella & herbs.</p> <span>$12.50</span> </div> <div class="menu-item"> <img src="https://via.placeholder.com/150" alt="Pasta"> <h3>Creamy Alfredo Pasta</h3> <p>Rich creamy sauce with parmesan.</p> <span>$10.75</span> </div> <div class="menu-item"> <img src="https://via.placeholder.com/150" alt="Salad"> <h3>Healthy Green Salad</h3> <p>Fresh garden greens with vinaigrette.</p> <span>$7.25</span> </div> </section> </head> <body> <div class="sidebar"> <div class="logo"><img src="https://via.placeholder.com/40" alt="Logo"></div> <div class="name">MyApp</div> <div class="menu"> <a href="#"><i class="fas fa-home"></i> Home</a> <a href="#"><i class="fas fa-user"></i> Profile</a> <a href="#"><i class="fas fa-cog"></i> Settings</a> <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a> </div> </div> </body> </html>
