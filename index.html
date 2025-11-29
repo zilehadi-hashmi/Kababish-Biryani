@@ -1,29 +1,98 @@
-<!DOCTYPE html> 
-<html lang="en"> 
-  <head>
-    <title>Food Shop Cart</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Food Shop Cart</title>
+
   <style>
-    body { font-family: Arial; padding: 20px; max-width: 600px; margin: auto; }
-    .item { margin-bottom: 15px; }
-    .cart { margin-top: 30px; border-top: 2px solid #aaa; padding-top: 20px; }
-    table { width: 100%; border-collapse: collapse; }
-    th, td { padding: 8px; border-bottom: 1px solid #ddd; }
-    button { cursor: pointer; padding: 5px 10px; }
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+      background-color: orange; /* Changed here */
+      color: black;
+    }
+
+    .item, .product {
+      margin-bottom: 15px;
+    }
+
+    button {
+      cursor: pointer;
+      padding: 6px 12px;
+      background: #ffdd00;
+      border: none;
+      border-radius: 5px;
+      color: black;
+      font-weight: bold;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+      background: #fff3cc;
+    }
+
+    th, td {
+      padding: 10px;
+      border-bottom: 1px solid #444;
+      text-align: left;
+    }
+
+    .cart {
+      margin-top: 30px;
+      border-top: 2px solid #000;
+      padding-top: 20px;
+    }
+
   </style>
-    <title>Minimal Cart Demo</title>
-  <style>
-    body { font-family: Arial, sans-serif; max-width: 600px; margin: 20px auto; }
-    .product { margin-bottom: 15px; }
-    .cart { margin-top: 30px; border-top: 2px solid #ccc; padding-top: 20px; }
-    table { width: 100%; border-collapse: collapse; }
-    th, td { padding: 8px; border-bottom: 1px solid #ccc; text-align: left; }
-    button { cursor: pointer; }
-    
-</form>
-  </style>
-    <title>Simple Shopping Cart</title>
-  <style>
-    <script>
+
+</head>
+
+<body>
+
+<h1>🍽 Kababish Biryani</h1>
+<h2>Food Menu</h2>
+
+<div class="product">
+  <span>Biryani — Rs.350</span>
+  <button onclick="addToCart('Biryani', 350)">Add to Cart</button>
+</div>
+
+<div class="product">
+  <span>Rice — Rs.300</span>
+  <button onclick="addToCart('Rice', 300)">Add to Cart</button>
+</div>
+
+<div class="product">
+  <span>Chicken Curry — Rs.220</span>
+  <button onclick="addToCart('Chicken Curry', 220)">Add to Cart</button>
+</div>
+
+<div class="product">
+  <span>Veg Meal — Rs.300</span>
+  <button onclick="addToCart('Veg Meal', 300)">Add to Cart</button>
+</div>
+
+<hr>
+
+<div class="cart">
+  <h2>Your Cart</h2>
+  <table id="cartTable">
+    <tr>
+      <th>Item</th>
+      <th>Qty</th>
+      <th>Price</th>
+      <th>Action</th>
+    </tr>
+  </table>
+
+  <h3>Total Amount: Rs.<span id="total">0</span></h3>
+</div>
+
+<script>
   let cart = [];
 
   function addToCart(name, price) {
@@ -39,6 +108,7 @@
   function changeQty(name, amount) {
     const item = cart.find(i => i.name === name);
     if (!item) return;
+
     item.qty += amount;
     if (item.qty <= 0) {
       cart = cart.filter(i => i.name !== name);
@@ -47,11 +117,18 @@
   }
 
   function renderCart() {
-    const table = document.getElementById('cartTable');
-    const totalEl = document.getElementById('total');
+    const table = document.getElementById("cartTable");
+    const totalEl = document.getElementById("total");
+
     table.innerHTML = `
-      <tr><th>Item</th><th>Qty</th><th>Subtotal</th><th>Actions</th></tr>
+      <tr>
+        <th>Item</th>
+        <th>Qty</th>
+        <th>Price</th>
+        <th>Action</th>
+      </tr>
     `;
+
     let total = 0;
 
     cart.forEach(item => {
@@ -60,7 +137,7 @@
         <tr>
           <td>${item.name}</td>
           <td>${item.qty}</td>
-          <td>₹${item.qty * item.price}</td>
+          <td>Rs.${item.price * item.qty}</td>
           <td>
             <button onclick="changeQty('${item.name}', 1)">+</button>
             <button onclick="changeQty('${item.name}', -1)">-</button>
@@ -73,262 +150,5 @@
   }
 </script>
 
-    body { font-family: Arial; padding: 20px; }
-    .product { margin-bottom: 15px; }
-    .cart { margin-top: 30px; border-top: 2px solid #ccc; padding-top: 20px; }
-    table { width: 100%; border-collapse: collapse; }
-    th, td { padding: 10px; border-bottom: 1px solid #ccc; }
-    button { cursor: pointer; }
-  </style>
-   <style>
-  
-      <body style="background-color# sky blue;">
-        .image-container {img src
-background-image: url('data:image/webp;base64,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');
-width: 300 px;
-height: 200 px;
-                                                                     
-background-repeat: no-repeat; <meta charset="UTF-8">
-    </style>
-    <title>Background Color Example</title>
-
-<body style="background-color: black;">
-
-
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Food Menu</title> <link rel="stylesheet" href="style.css"> 
-  </head> 
-  <body> 
-    
-
-<script>
-  let cart = [];
-
-  function addToCart(name, price) {
-    const item = cart.find(i => i.name === name);
-    if (item) {
-      item.qty++;
-    } else {
-      cart.push({ name, price, qty: 1 });
-    }
-    renderCart();
-  }
-
-  function changeQty(name, delta) {
-    const item = cart.find(i => i.name === name);
-    if (!item) return;
-    item.qty += delta;
-    if (item.qty <= 0) {
-      cart = cart.filter(i => i.name !== name);
-    }
-    renderCart();
-  }
-
-  function renderCart() {
-    const table = document.getElementById('cartTable');
-    const totalEl = document.getElementById('total');
-    table.innerHTML = '<tr><th>Item</th><th>Qty</th><th>Price</th><th>Action</th></tr>';
-    let total = 0;
-    cart.forEach(item => {
-      total += item.qty * item.price;
-      table.innerHTML += `
-        <tr>
-          <td>Rs.{item.name}</td>
-          <td>Rs.{item.qty}</td>
-          <td>Rs.{item.price * item.qty}</td>
-          <td>
-            <button onclick="changeQty('Rs.{item.name}', 1)">+</button>
-            <button onclick="changeQty('Rs.{item.name}', -1)">-</button>
-          </td>
-        </tr>`;
-    });
-    totalEl.textContent = total.toFixed(2);
-    
-  }
-  
-  <h2>Food Menu</h2>
-
-<div class="item">
-  <span>Biryani — Rs.350</span>
-  <button onclick="addToCart('Biryani',Rs. 350)">Add</button>
-</div>
-
-<div class="item">
-  <span>Rice —Rs. 300</span>
-  <button onclick="addToCart('Rice',Rs. 300)">Add</button>
-</div>
-
-<div class="item">
-  <span>Chicken Curry — Rs220</span>
-  <button onclick="addToCart('Chicken Curry',Rs. 220)">Add</button>
-</div>
-
-<div class="item">
-  <span>Veg Meal —Rs. 300</span>
-  <button onclick="addToCart('Veg Meal',Rs. 300)">Add</button>
-</div>
-
-<hr>
-
-<div class="cart">
-  <h2>Your Cart</h2>
-  <table id="cartTable"></table>
-  <h3>Total Amount: Rs.<span id="total">0</span></h3>
-</div>
-
-    </script>
-  <script>
-    <form action="/action_page.php">
-  <input type="file" id="myFile" name="filename">
-  <input type="submit">
-    
-    
-
- 
- 
-</script>
-    
-    <nav class="navbar"> <h2 class="logo">Kababish Biryani </h2>
-    
-    <ul> <li><a href="#">Home</a></li> <li><a href="#menu">Menu</a></li> 
-      <li><a href="#contact">Contact</a></li> </ul> </nav>
-    
-
-    
-          
-        
-
-    <header class="hero">
-        <h1>Welcome to Our Restaurant</h1>
-        <p>Delicious Meals • Amazing Taste • Fresh Ingredients</p>
-        <a href="#menu" class="btn">Explore Menu</a>
-    </header>
-
-    <section id="menu" class="menu-section">
-        <h2 class="section-title">Our Menu</h2>
-
-        <div class="menu-container">
-
-            <div class="menu-card">
-                <img src="https://via.placeholder.com/200" alt="">
-                <h3>Biryani</h3>
-                <p>Sindhi Biryani.</p>
-                <span class="price">350</span>
-                <script>
-    <form action="/action_page.php">
-  <input type="file" id="myFile" name="filename">
-  <input type="submit">
-    
-    
-
- 
- 
-</script>
-              
-            </div>
-
-            <div class="menu-card">
-                <img src="https://via.placeholder.com/200" alt="">
-                <h3>Fried Rice </h3>
-                <p>Fried rice is a beloved dish that combines cooked rice with a variety of ingredients, creating a flavorful and versatile meal enjoyed worldwide..</p>
-                <span class="price">400</span>
-                <script>
-    <form action="/action_page.php">
-  <input type="file" id="myFile" name="filename">
-  <input type="submit">
-    
-    
-
- 
- 
-</script>
-            </div>
-
-            <div class="menu-card">
-                <img src="https://via.placeholder.com/200" alt="">
-                <h3>Pasta</h3>
-                <p>Creamy  pasta.</p>
-                <span class="price">400</span>
-                <script>
-    <form action="/action_page.php">
-  <input type="file" id="myFile" name="filename">
-  <input type="submit">
-    
-    
-
- 
- 
-</script>
-            </div>
-
-            <div class="menu-card">
-                <img src="https://via.placeholder.com/200" alt="">
-                <h3>Salad</h3>
-                <p>Fresh salad with organic vegetables.</p>
-                <span class="price">Rs.300</span>
-              
-              
-
-              <h2>Products</h2>
-
-<div class="product">
-  <span>Biryani —Rs. 350</span>
-  <button onclick="addToCart('Biryani',Rs. 350)">Add to Cart</button>
-</div>
-<div class="product">
-  <span>Biryani — Rs.250</span>
-  <button onclick="addToCart('Biryani',Rs. 250)">Add to Cart</button>
-</div>
-<div class="product">
-  <span>Pasta  — Rs. 450</span>
-  <button onclick="addToCart('Pasta ', Rs.450)">Add to Cart</button>
-</div>
-    <div class="product">
-  <span>Pasta  — Rs. 300</span>
-  <button onclick="addToCart('Pasta ', Rs.300)">Add to Cart</button>
-</div>
-    <div class="product">
-  <span>Fried Rice —Rs. 450</span>
-  <button onclick="addToCart('Fried Rice', Rs.450)">Add to Cart</button>
-</div>
-     <div class="product">
-  <span>Fried Rice —Rs. 300</span>
-  <button onclick="addToCart('Fried Rice', Rs.300)">Add to Cart</button>
-</div>
-
-
-
-<div class="cart">
-  <h2>Your Cart</h2>
-  <table id="cartTable"></table>
-  <h3>Total: Rs.<span id="total">0</span></h3>
-</div>
-
-        </div>
-    </section>
-
-    <footer id="contact">
-        <p>© 2025 Foodie Restaurant. All rights reserved.</p>
-    </footer>
-
 </body>
-
-<style>
-Copy code
-/* Global Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-}
-
-body {
-    background: #black;
-    color: #black;}
- < body>
-  
-}
-  </html>
-
+</html>
