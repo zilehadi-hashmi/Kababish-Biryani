@@ -1,52 +1,103 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <title>Kababish Biryani</title> <style> body { font-family: Arial, sans-serif; padding: 20px; max-width: 900px; margin: auto; background-color: orange; color: black; } /* Hero Section */ .hero { background: url("https://images.unsplash.com/photo-1504674900247-0877df9cc836") center/cover; padding: 60px; border-radius: 10px; text-align: center; color: white; margin-bottom: 30px; } .hero h1 { font-size: 40px; } .hero p { font-size: 20px; margin-bottom: 10px; } .btn { background: yellow; padding: 10px 20px; border-radius: 8px; font-weight: bold; text-decoration: none; color: black; } /* Menu styling */ .menu-container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 40px; } .menu-card { background: white; padding: 15px; border-radius: 10px; text-align: center; box-shadow: 0 0 10px rgba(0,0,0,0.2); } .menu-card img { width: 200px; border-radius: 10px; } .price { font-weight: bold; display: block; margin: 10px 0; } button { cursor: pointer; padding: 6px 12px; background: #ffdd00; border: none; border-radius: 5px; color: black; font-weight: bold; } table { width: 100%; border-collapse: collapse; margin-top: 15px; background: #fff3cc; } th, td { padding: 10px; border-bottom: 1px solid #444; text-align: left; } .cart { margin-top: 30px; border-top: 2px solid #000; padding-top: 20px; } </style> </head> <body> <!-- HERO SECTION --> <header class="hero"> <h1>Welcome to Kababish Biryani</h1> <p>Delicious Meals • Amazing Taste • Fresh Ingredients</p> <a href="#menu" class="btn">Explore Menu</a> </header> <h2 id="menu">Our Food Menu</h2> <!-- MENU GRID --> <div class="menu-container"> <div class="menu-card"> <img src="https://images.unsplash.com/photo-1604908177522-0404f7c61f1b" alt="Biryani"> <h3>Biryani</h3> <p>Sindhi Biryani.</p> <span class="price">Rs.350</span> <button onclick="addToCart('Biryani', 350)">Add to Cart</button> </div> <div class="menu-card"> <img src="https://images.unsplash.com/photo-1601314158135-76af6e3b36b9" alt="Fried Rice"> <h3>Fried Rice</h3> <p>Delicious fried rice with veggies.</p> <span class="price">Rs.400</span> <button onclick="addToCart('Fried Rice', 400)">Add to Cart</button> </div> <div class="menu-card"> <img src="https://images.unsplash.com/photo-1521389508051-d7ffb5dc8bc4" alt="Pasta"> <h3>Pasta</h3> <p>Creamy pasta.</p> <span class="price">Rs.400</span> <button onclick="addToCart('Pasta', 400)">Add to Cart</button> </div> <div class="menu-card"> <img src="https://images.unsplash.com/photo-1556912993-03814aab73df" alt="Salad"> <h3>Salad</h3> <p>Fresh salad with organic vegetables.</p> <span class="price">Rs.300</span> <button onclick="addToCart('Salad', 300)">Add to Cart</button> </div> </div> <hr> <!-- CART SECTION --> <div class="cart"> <h2>Your Cart</h2> <table id="cartTable"> <tr> <th>Item</th> <th>Qty</th> <th>Price</th> <th>Action</th> </tr> </table> <h3>Total Amount: Rs.<span id="total">0</span></h3> </div> <script> let cart = []; function addToCart(name, price) { const item = cart.find(i => i.name === name); if (item) { item.qty++; } else { cart.push({ name, price, qty: 1 }); } renderCart(); } function changeQty(name, amount) { const item = cart.find(i => i.name === name); if (!item) return; item.qty += amount; if (item.qty <= 0) { cart = cart.filter(i => i.name !== name); } renderCart(); } function renderCart() { const table = document.getElementById("cartTable"); const totalEl = document.getElementById("total"); table.innerHTML = <tr> <th>Item</th> <th>Qty</th> <th>Price</th> <th>Action</th> </tr> ; let total = 0; cart.forEach(item => { total += item.qty * item.price; table.innerHTML += <tr> <td>${item.name}</td> <td>${item.qty}</td> <td>Rs.${item.price * item.qty}</td> <td> <button onclick="changeQty('${item.name}', 1)">+</button> <button onclick="changeQty('${item.name}', -1)">-</button> </td> </tr> ; }); totalEl.textContent = total; } </script> <html lang="en"> <head> <meta charset="UTF-8" /> <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <title>Order Receiving Page</title> <style> body { font-family: Arial, sans-serif; background: #Orange; padding: 40px; } .container { max-width: 500px; margin: auto; background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); } input, textarea, button { width: 100%; padding: 12px; margin: 8px 0; border-radius: 8px; border: 1px solid #ccc; font-size: 16px; } button { background: #4caf50; color: #fff; cursor: pointer; } button:hover { background: #43a047; } </style> </head> <body> <div class="container"> <h2>Order Receiving Form</h2> <form> <label>Customer Name</label> <input type="text" placeholder="Enter customer name" required /> <label>Product</label> <input type="text" placeholder="Product name" required /> <label>Quantity</label> <input type="number" min="1" placeholder="Quantity" required /> <label>Notes</label> <textarea placeholder="Additional notes..."></textarea> <button type="submit">Submit Order</button> </form> </div> <script>
-async function submitOrder(orderData) {
-    const repoOwner = "zilehadi-hashmi";
-    const repoName = "Kababish-Biryanii";
-    const filePath = "orders.json";
-    const token = "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"; /
+<!-- FILE: index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kababish Biryani</title>
+  <style>
+    :root{--accent:#ff7b00;--accent-2:#ffdd00;--card:#ffffff}
+    *{box-sizing:border-box}
+    body{font-family:Inter, Arial, sans-serif;margin:0;background:linear-gradient(180deg,#fff6ea 0%, #fff 100%);color:#111}
+    header{background:var(--accent);color:#fff;padding:28px 20px;text-align:center}
+    header h1{margin:0;font-size:28px}
+    .wrap{max-width:980px;margin:28px auto;padding:0 16px}
+    .hero{display:grid;grid-template-columns:1fr;gap:16px;align-items:center;padding:22px;border-radius:12px;background-image:url('https://images.unsplash.com/photo-1504674900247-0877df9cc836');background-size:cover;color:#fff}
+    .hero .cta{background:rgba(0,0,0,0.35);padding:14px;border-radius:10px;display:inline-block}
+    .menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:18px}
+    .card{background:var(--card);padding:14px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.08);text-align:center}
+    .card img{width:100%;height:140px;object-fit:cover;border-radius:8px}
+    .price{font-weight:700;margin:10px 0;display:block}
+    button{cursor:pointer;padding:8px 12px;border-radius:8px;border:0;background:var(--accent-2);font-weight:700}
+    .cart-wrap{margin-top:26px;background:#fff9e6;padding:14px;border-radius:12px}
+    table{width:100%;border-collapse:collapse}
+    th,td{padding:8px;text-align:left}
+    .tot{font-weight:800;font-size:18px}
+    .form{margin-top:18px;background:#fff;padding:14px;border-radius:12px}
+    input,textarea,select{width:100%;padding:10px;margin-top:8px;border:1px solid #ddd;border-radius:8px}
+    .row{display:flex;gap:10px}
+    .row > *{flex:1}
+    .small{flex:0 0 120px}
+    .inline-btn{display:inline-flex;gap:8px}
+    footer{text-align:center;padding:18px;color:#666}
+    @media(max-width:600px){.hero{padding:20px}.hero h2{font-size:20px}}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🍽 Kababish Biryani</h1>
+    <div style="font-size:14px;margin-top:8px">Delicious meals — Order online or receive in-store</div>
+  </header>
 
-    // 1. GET the current orders.json
-    const getResponse = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`, {
-        headers: {
-            "Authorization": `Bearer ${token}`,
-            "Accept": "application/vnd.github+json"
-        }
-    });
+  <main class="wrap">
+    <section class="hero">
+      <div style="padding:30px;background:rgba(0,0,0,0.28);border-radius:12px">
+        <h2 style="margin:0 0 8px">Welcome — Fresh, hot & tasty</h2>
+        <p style="margin:0 0 12px;max-width:640px">Choose from our menu below. Add items to cart and submit orders — secure and simple.</p>
+        <div class="cta">
+          <a href="#menu" style="text-decoration:none;color:#fff;font-weight:700">Explore menu</a>
+        </div>
+      </div>
+    </section>
 
-    const file = await getResponse.json();
-    const content = atob(file.content);
-    let orders = JSON.parse(content);
+    <h2 id="menu" style="margin-top:22px">Menu</h2>
+    <div class="menu-grid" id="menuGrid"></div>
 
-    // 2. Add new order
-    orders.push(orderData);
+    <section class="cart-wrap" aria-labelledby="cartTitle">
+      <h2 id="cartTitle">Your Cart</h2>
+      <div id="cartArea"></div>
 
-    // 3. Update JSON file to GitHub
-    const updatedContent = btoa(JSON.stringify(orders, null, 2));
+      <div class="form">
+        <h3>Order Details</h3>
+        <form id="orderForm" onsubmit="event.preventDefault(); submitOrderFromForm()">
+          <label>Customer name</label>
+          <input id="custName" required placeholder="Full name" />
 
-    await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`, {
-        method: "PUT",
-        headers: {
-            "Authorization": `Bearer ${token}`,
-            "Accept": "application/vnd.github+json"
-        },
-        body: JSON.stringify({
-            message: "New order added",
-            content: updatedContent,
-            sha: file.sha
-          </script>
-        })
-    });
+          <label>Phone</label>
+          <input id="custPhone" placeholder="0312xxxxxxx" />
 
-    alert("Order submitted!");
-}
+          <label>Delivery address (optional)</label>
+          <textarea id="custAddress" placeholder="House, street, area"></textarea>
 
+          <div style="display:flex;gap:10px;margin-top:8px">
+            <button type="button" onclick="clearCart()" style="background:#eee;color:#111">Clear cart</button>
+            <button type="submit" style="margin-left:auto;background:var(--accent);color:#fff">Submit order</button>
+          </div>
+          <div style="font-size:12px;color:#666;margin-top:8px">Orders are sent to a secure backend — no tokens in the browser.</div>
+        </form>
+      </div>
+    </section>
+  </main>
 
-    };
+  <footer>© Kababish Biryani</footer>
 
-    submitOrder(order);
-}</body> </html> </body> </html>
+  <script>
+    // ---------- CONFIG ----------
+    // Change this to your deployed backend URL (no trailing slash)
+    const BACKEND_URL = "https://your-backend-url.example.com";
 
+    // ---------- SAMPLE MENU (you can edit this) ----------
+    const MENU = [
+      { id: "biryani", title: "Sindhi Biryani", desc: "Fragrant biryani with tender meat", price: 350, img: "https://images.unsplash.com/photo-1604908177522-0404f7c61f1b" },
+      { id: "friedrice", title: "Fried Rice", desc: "Veg fried rice with spices", price: 400, img: "https://images.unsplash.com/photo-1601314158135-76af6e3b36b9" },
+      { id: "pasta", title: "Creamy Pasta", desc: "Creamy pasta with herbs", price: 400, img: "https://images.unsplash.com/photo-1521389508051-d7ffb5dc8bc4" },
+      { id: "salad", title: "Fresh Salad", desc: "Organic salad mix", price: 300, img: "https://images.unsplash.com/photo-1556912993-03814aab73df" }
+    ];
 
+    // ---------- CART LOGIC ----------
+    let cart = JSON.parse(localStorage.getItem('kb_cart') || '[]');
 
-  
-  
+    function saveCart() { localStorage.setItem('kb_cart', JSON.stringify(cart)); }
+
+    function addToCart(itemId) {
+      const menuItem = MEN
