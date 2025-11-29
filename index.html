@@ -9,9 +9,7 @@
     table { width: 100%; border-collapse: collapse; }
     th, td { padding: 8px; border-bottom: 1px solid #ccc; text-align: left; }
     button { cursor: pointer; }
-    <form action="/action_page.php">
-  <input type="file" id="myFile" name="filename">
-  <input type="submit">
+    
 </form>
   </style>
     <title>Simple Shopping Cart</title>
@@ -113,7 +111,9 @@ background-repeat: no-repeat; <meta charset="UTF-8">
         </tr>`;
     });
     totalEl.textContent = total.toFixed(2);
+    
   }
+  
   <h2>Food Menu</h2>
 
 <div class="item">
@@ -144,109 +144,16 @@ background-repeat: no-repeat; <meta charset="UTF-8">
   <h3>Total Amount: Rs.<span id="total">0</span></h3>
 </div>
 
-<script>
-  let cart = [];
+    </script>
+  <script>
+    <form action="/action_page.php">
+  <input type="file" id="myFile" name="filename">
+  <input type="submit">
+    
+    
 
-  function addToCart(name, price) {
-    const item = cart.find(i => i.name === name);
-    if (item) {
-      item.qty++;
-    } else {
-      cart.push({ name, price, qty: 1 });
-    }
-    renderCart();
-  }
-
-  function changeQty(name, amount) {
-    const item = cart.find(i => i.name === name);
-    if (!item) return;
-    item.qty += amount;
-    if (item.qty <= 0) {
-      cart = cart.filter(i => i.name !== name);
-    }
-    renderCart();
-  }
-
-  function renderCart() {
-    const table = document.getElementById('cartTable');
-    const totalEl = document.getElementById('total');
-    table.innerHTML = `
-      <tr><th>Item</th><th>Qty</th><th>Subtotal</th><th>Actions</th></tr>
-    `;
-    let total = 0;
-
-    cart.forEach(item => {
-      total += item.qty * item.price;
-      table.innerHTML += `
-        <tr>
-          <td>${item.name}</td>
-          <td>${item.qty}</td>
-          <td>₹${item.qty * item.price}</td>
-          <td>
-            <button onclick="changeQty('${item.name}', 1)">+</button>
-            <button onclick="changeQty('${item.name}', -1)">-</button>
-          </td>
-        </tr>
-      `;
-    });
-
-    totalEl.textContent = total;
-  }
-</script>
-    <h2>Products</h2>
-
-
-  let cart = [];
-
-  function addToCart(name, price) {
-    const existing = cart.find(item => item.name === name);
-    if (existing) {
-      existing.qty++;
-    } else {
-      cart.push({ name, price, qty: 1 });
-    }
-    renderCart();
-  }
-
-  function changeQty(name, amount) {
-    const item = cart.find(i => i.name === name);
-    if (!item) return;
-
-    item.qty += amount;
-    if (item.qty <= 0) {
-      cart = cart.filter(i => i.name !== name);
-    }
-    renderCart();
-  }
-
-  function renderCart() {
-    const table = document.getElementById("cartTable");
-    const totalElem = document.getElementById("total");
-
-    table.innerHTML = `
-      <tr><th>Item</th><th>Qty</th><th>Price</th><th>Action</th></tr>
-    `;
-
-    let total = 0;
-
-    cart.forEach(item => {
-      total += item.price * item.qty;
-
-      table.innerHTML += `
-        <tr>
-          <td>${item.name}</td>
-          <td>${item.qty}</td>
-          <td>$${item.price * item.qty}</td>
-          <td>
-            <button onclick="changeQty('${item.name}', 1)">+</button>
-            <button onclick="changeQty('${item.name}', -1)">-</button>
-          </td>
-        </tr>
-      `;
-    });
-
-    totalElem.textContent = total;
-  }
+ 
+ 
 </script>
     
     <nav class="navbar"> <h2 class="logo">Kababish Biryani </h2>
@@ -275,6 +182,17 @@ background-repeat: no-repeat; <meta charset="UTF-8">
                 <h3>Biryani</h3>
                 <p>Sindhi Biryani.</p>
                 <span class="price">350</span>
+                <script>
+    <form action="/action_page.php">
+  <input type="file" id="myFile" name="filename">
+  <input type="submit">
+    
+    
+
+ 
+ 
+</script>
+              
             </div>
 
             <div class="menu-card">
@@ -282,6 +200,16 @@ background-repeat: no-repeat; <meta charset="UTF-8">
                 <h3>Fried Rice </h3>
                 <p>Fried rice is a beloved dish that combines cooked rice with a variety of ingredients, creating a flavorful and versatile meal enjoyed worldwide..</p>
                 <span class="price">400</span>
+                <script>
+    <form action="/action_page.php">
+  <input type="file" id="myFile" name="filename">
+  <input type="submit">
+    
+    
+
+ 
+ 
+</script>
             </div>
 
             <div class="menu-card">
@@ -289,13 +217,25 @@ background-repeat: no-repeat; <meta charset="UTF-8">
                 <h3>Pasta</h3>
                 <p>Creamy  pasta.</p>
                 <span class="price">400</span>
+                <script>
+    <form action="/action_page.php">
+  <input type="file" id="myFile" name="filename">
+  <input type="submit">
+    
+    
+
+ 
+ 
+</script>
             </div>
 
             <div class="menu-card">
                 <img src="https://via.placeholder.com/200" alt="">
                 <h3>Salad</h3>
                 <p>Fresh salad with organic vegetables.</p>
-                <span class="price">$7.25</span>
+                <span class="price">Rs.300</span>
+              
+              
             </div>
 
         </div>
