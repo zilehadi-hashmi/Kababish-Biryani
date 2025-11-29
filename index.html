@@ -1,6 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <header class="hero">
+  <h1>Welcome to Kababish Biryani</h1>
+  <p>Delicious Meals • Amazing Taste • Fresh Ingredients</p>
+  <a href="#menu" class="btn">Explore Menu</a>
+</header>
+
+<h2 id="menu">Our Food Menu</h2>
+
+<!-- MENU GRID -->
+<div class="menu-container">
+
+  <div class="menu-card">
+    <img src="https://images.unsplash.com/photo-1604908177522-0404f7c61f1b" alt="Biryani">
+    <h3>Biryani</h3>
+    <p>Sindhi Biryani.</p>
+    <span class="price">Rs.350</span>
+    <button onclick="addToCart('Biryani', 350)">Add to Cart</button>
+  </div>
+
+  <div class="menu-card">
+    <img src="https://images.unsplash.com/photo-1601314158135-76af6e3b36b9" alt="Fried Rice">
+    <h3>Fried Rice</h3>
+    <p>Delicious fried rice with veggies.</p>
+    <span class="price">Rs.400</span>
+    <button onclick="addToCart('Fried Rice', 400)">Add to Cart</button>
+  </div>
+
+  <div class="menu-card">
+    <img src="https://images.unsplash.com/photo-1521389508051-d7ffb5dc8bc4" alt="Pasta">
+    <h3>Pasta</h3>
+    <p>Creamy pasta.</p>
+    <span class="price">Rs.400</span>
+    <button onclick="addToCart('Pasta', 400)">Add to Cart</button>
+  </div>
+
+  <div class="menu-card">
+    <img src="https://images.unsplash.com/photo-1556912993-03814aab73df" alt="Salad">
+    <h3>Salad</h3>
+    <p>Fresh salad with organic vegetables.</p>
+    <span class="price">Rs.300</span>
+    <button onclick="addToCart('Salad', 300)">Add to Cart</button>
+  </div>
+
+</div>
+
+<hr>
+
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Kababish Biryani</title>
