@@ -35,24 +35,36 @@ background-repeat: no-repeat; <meta charset="UTF-8">
     <h2>Products</h2>
 
 <div class="product">
-  <span>Biryani — 350/250</span>
-  <button onclick="addToCart('Biryani', 10)">Add to Cart</button>
+  <span>Biryani —Rs. 350</span>
+  <button onclick="addToCart('Biryani',Rs. 350)">Add to Cart</button>
 </div>
-
 <div class="product">
-  <span>Pasta  — 450/300</span>
-  <button onclick="addToCart('Product c', 20)">Add to Cart</button>
+  <span>Biryani — Rs.250</span>
+  <button onclick="addToCart('Biryani',Rs. 250)">Add to Cart</button>
+</div>
+<div class="product">
+  <span>Pasta  — Rs. 450</span>
+  <button onclick="addToCart('Pasta ', Rs.450)">Add to Cart</button>
 </div>
     <div class="product">
-  <span>Fried Rice — 450/300</span>
-  <button onclick="addToCart('Fried Rice', 20)">Add to Cart</button>
+  <span>Pasta  — Rs. 300</span>
+  <button onclick="addToCart('Pasta ', Rs.300)">Add to Cart</button>
 </div>
+    <div class="product">
+  <span>Fried Rice —Rs. 450</span>
+  <button onclick="addToCart('Fried Rice', Rs.450)">Add to Cart</button>
+</div>
+     <div class="product">
+  <span>Fried Rice —Rs. 300</span>
+  <button onclick="addToCart('Fried Rice', Rs.300)">Add to Cart</button>
+</div>
+
 
 
 <div class="cart">
   <h2>Your Cart</h2>
   <table id="cartTable"></table>
-  <h3>Total: $<span id="total">0</span></h3>
+  <h3>Total: Rs.<span id="total">0</span></h3>
 </div>
 
 <script>
@@ -87,12 +99,12 @@ background-repeat: no-repeat; <meta charset="UTF-8">
       total += item.qty * item.price;
       table.innerHTML += `
         <tr>
-          <td>${item.name}</td>
-          <td>${item.qty}</td>
-          <td>$${item.price * item.qty}</td>
+          <td>Rs.{item.name}</td>
+          <td>Rs.{item.qty}</td>
+          <td>Rs.{item.price * item.qty}</td>
           <td>
-            <button onclick="changeQty('${item.name}', 1)">+</button>
-            <button onclick="changeQty('${item.name}', -1)">-</button>
+            <button onclick="changeQty('Rs.{item.name}', 1)">+</button>
+            <button onclick="changeQty('Rs.{item.name}', -1)">-</button>
           </td>
         </tr>`;
     });
@@ -101,23 +113,23 @@ background-repeat: no-repeat; <meta charset="UTF-8">
   <h2>Food Menu</h2>
 
 <div class="item">
-  <span>Biryani — ₹150</span>
-  <button onclick="addToCart('Biryani', 150)">Add</button>
+  <span>Biryani — Rs.350</span>
+  <button onclick="addToCart('Biryani',Rs. 350)">Add</button>
 </div>
 
 <div class="item">
-  <span>Rice — ₹60</span>
-  <button onclick="addToCart('Rice', 60)">Add</button>
+  <span>Rice —Rs. 300</span>
+  <button onclick="addToCart('Rice',Rs. 300)">Add</button>
 </div>
 
 <div class="item">
-  <span>Chicken Curry — ₹120</span>
-  <button onclick="addToCart('Chicken Curry', 120)">Add</button>
+  <span>Chicken Curry — Rs220</span>
+  <button onclick="addToCart('Chicken Curry',Rs. 220)">Add</button>
 </div>
 
 <div class="item">
-  <span>Veg Meal — ₹90</span>
-  <button onclick="addToCart('Veg Meal', 90)">Add</button>
+  <span>Veg Meal —Rs. 300</span>
+  <button onclick="addToCart('Veg Meal',Rs. 300)">Add</button>
 </div>
 
 <hr>
@@ -125,7 +137,7 @@ background-repeat: no-repeat; <meta charset="UTF-8">
 <div class="cart">
   <h2>Your Cart</h2>
   <table id="cartTable"></table>
-  <h3>Total Amount: ₹<span id="total">0</span></h3>
+  <h3>Total Amount: Rs.<span id="total">0</span></h3>
 </div>
 
 <script>
@@ -179,25 +191,7 @@ background-repeat: no-repeat; <meta charset="UTF-8">
 </script>
     <h2>Products</h2>
 
-<div class="product">
-  <span>Product A - $10</span>
-  <button onclick="addToCart('Product A', 10)">Add to Cart</button>
-</div>
 
-<div class="product">
-  <span>Product B - $20</span>
-  <button onclick="addToCart('Product B', 20)">Add to Cart</button>
-</div>
-
-<hr>
-
-<div class="cart">
-  <h2>Your Cart</h2>
-  <table id="cartTable"></table>
-  <h3>Total: $<span id="total">0</span></h3>
-</div>
-
-<script>
   let cart = [];
 
   function addToCart(name, price) {
