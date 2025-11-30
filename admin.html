@@ -3,45 +3,44 @@
 
  <html lang="en">  
 <head>  
-<meta charset="utf-8" />  
-<meta name="viewport" content="width=device-width,initial-scale=1" />  
-<title>Admin - Orders</title>  
-<style>  
-body{font-family:Arial,Helvetica,sans-serif;background:#f5f5f5;margin:0;padding:20px}  
-.wrap{max-width:900px;margin:auto}  
-header{background:#ff7b00;padding:18px;color:#fff;border-radius:10px}  
-.controls{display:flex;gap:8px;margin:16px 0}  
-.btn{padding:10px 12px;border-radius:8px;border:0;cursor:pointer}  
-.card{background:#fff;padding:14px;border-radius:10px;margin-bottom:12px;box-shadow:0 6px 18px rgba(0,0,0,0.06)}  
-pre{white-space:pre-wrap}  
-</style>  
-</head>  
-<body>  
-<div class="wrap">  
-<header><h2 style="margin:0">Order Dashboard</h2></header>  
-<div class="controls">  
-<button class="btn" onclick="loadOrders()" style="background:#ff7b00;color:#fff">Refresh</button>  
-<input id="rawUrl" style="flex:1;padding:8px;border-radius:8px;border:1px solid #ddd" value="https://raw.githubusercontent.com/zilehadi-hashmi/Kababish-Biryanii/main/orders.json">  
-</div>  
-<div id="orders"></div>  
-</div>  <script>  
-async function loadOrders(){  
-const url = document.getElementById('rawUrl').value.trim();  
-try{  
-const res = await fetch(url);  
-if(!res.ok) throw new Error('Failed to fetch orders');  
-const data = await res.json();  
-const node = document.getElementById('orders'); node.innerHTML='';  
-if(!Array.isArray(data) || data.length===0){ node.innerHTML = '<div style="padding:12px;color:#666">No orders found</div>'; return; }  
-data.slice().reverse().forEach((o,i)=>{  
-const div = document.createElement('div'); div.className='card';  
-div.innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center"><strong>Order #${data.length - i}</strong><small>${o.time || ''}</small></div><div style="margin-top:8px"><pre>${JSON.stringify(o,null,2)}</pre></div>`;  node.appendChild(div);
-});
-}catch(err){ console.error(err); document.getElementById('orders').innerHTML = '<div style="padding:12px;color:red">Failed to load orders</div>'; }
+<script>
+async function loadOrders(){
+    const url = document.getElementById('rawUrl').value.trim();
+    try{
+        const res = await fetch(url);
+        if(!res.ok) throw new Error('Failed to fetch orders');
+        
+        const data = await res.json();
+        const node = document.getElementById('orders');
+        node.innerHTML='';
+
+        if(!Array.isArray(data) || data.length===0){
+            node.innerHTML = '<div style="padding:12px;color:#666">No orders found</div>';
+            return;
+        }
+
+        data.slice().reverse().forEach((o,i)=>{
+            const div = document.createElement('div');
+            div.className='card';
+            div.innerHTML = `
+                <div style="display:flex;justify-content:space-between;align-items:center">
+                    <strong>Order #${data.length - i}</strong>
+                    <small>${o.time || ''}</small>
+                </div>
+                <div style="margin-top:8px">
+                    <pre>${JSON.stringify(o,null,2)}</pre>
+                </div>`;
+            node.appendChild(div);
+        });
+
+    }catch(err){
+        console.error(err);
+        document.getElementById('orders').innerHTML =
+            '<div style="padding:12px;color:red">Failed to load orders</div>';
+    }
 }
 
 loadOrders();
 </script>
-
 </body>  
 </html> 
