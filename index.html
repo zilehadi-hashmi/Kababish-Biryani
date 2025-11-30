@@ -3,6 +3,184 @@
 <head>
 <meta charset="UTF-8">
     
+<meta charset="UTF-8" />
+  <title>Add to Cart Demo</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 24px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+    .card { border: 1px solid #ddd; border-radius: 8px; padding: 12px; }
+    .card h4 { margin: 0 0 8px; }
+    .price { color: #0a7; font-weight: 600; }
+    button { cursor: pointer; padding: 8px 12px; border: 1px solid #333; background: #fff; border-radius: 6px; }
+    button:hover { background: #f6f6f6; }
+    #cart { margin-top: 28px; }
+    #cart table { width: 100%; border-collapse: collapse; }
+    #cart th, #cart td { border-bottom: 1px solid #eee; padding: 8px; text-align: left; }
+    #cart-actions { margin-top: 12px; display: flex; gap: 8px; }
+    .qty { width: 56px; }
+    .empty { color: #888; }
+    #total { font-weight: 700; }
+  </style>
+</head>
+<body>
+  <h2>Products</h2>
+  <div id="products" class="grid"></div>
+
+  <div id="cart">
+    <h2>Your cart</h2>
+    <div id="cart-content" class="empty">Your cart is empty.</div>
+    <div id="cart-actions" style="display:none;">
+      <button id="clear-cart">Clear cart</button>
+      <button id="checkout">Checkout</button>
+    </div>
+  </div>
+
+  <script>
+    
+    const PRODUCTS = [
+      { id: 1, name: " SindhiBiryani", price: 400 },
+      { id: 2, name: "",Fried Rice: 200 },
+      { id: 3, name: "Chowmein", price: 450 },
+      { id: 4, name: "Minchurian", price: 400 },
+          { id: 5, name: "Shami Kabab", price: 50 },
+    
+    ];
+
+    // Cart state
+    const CART_KEY = "demo_cart_v1";
+    let cart = loadCart();
+
+    // Render products
+    function renderProducts() {
+      const container = document.getElementById("products");
+      container.innerHTML = PRODUCTS.map(p => `
+        <div class="card">
+          <h4>${p.name}</h4>
+          <div class="price">PKR ${formatPrice(p.price)}</div>
+          <button onclick="addToCart(${p.id})">Add to cart</button>
+        </div>
+      `).join("");
+    }
+
+    // Add to cart
+    function addToCart(productId) {
+      const product = PRODUCTS.find(p => p.id === productId);
+      if (!product) return;
+
+      const existing = cart.items.find(i => i.id === productId);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.items.push({ id: product.id, name: product.name, price: product.price, qty: 1 });
+      }
+      saveCart();
+      renderCart();
+    }
+
+    // Remove item
+    function removeItem(productId) {
+      cart.items = cart.items.filter(i => i.id !== productId);
+      saveCart();
+      renderCart();
+    }
+
+    // Update quantity
+    function updateQty(productId, qty) {
+      qty = Math.max(1, parseInt(qty || "1", 10));
+      const item = cart.items.find(i => i.id === productId);
+      if (!item) return;
+      item.qty = qty;
+      saveCart();
+      renderCart();
+    }
+
+    // Clear cart
+    function clearCart() {
+      cart.items = [];
+      saveCart();
+      renderCart();
+    }
+
+    // Render cart
+    function renderCart() {
+      const content = document.getElementById("cart-content");
+      const actions = document.getElementById("cart-actions");
+
+      if (!cart.items.length) {
+        content.innerHTML = `<div class="empty">Your cart is empty.</div>`;
+        actions.style.display = "none";
+        return;
+      }
+
+      const rows = cart.items.map(i => `
+        <tr>
+          <td>${i.name}</td>
+          <td>PKR ${formatPrice(i.price)}</td>
+          <td>
+            <input class="qty" type="number" min="1" value="${i.qty}" 
+              onchange="updateQty(${i.id}, this.value)" />
+          </td>
+          <td>PKR ${formatPrice(i.price * i.qty)}</td>
+          <td><button onclick="removeItem(${i.id})">Remove</button></td>
+        </tr>
+      `).join("");
+
+      const total = cart.items.reduce((sum, i) => sum + i.price * i.qty, 0);
+
+      content.innerHTML = `
+        <table>
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Price</th>
+              <th>Qty</th>
+              <th>Subtotal</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>${rows}</tbody>
+          <tfoot>
+            <tr>
+              <td colspan="3" style="text-align:right;"><strong>Total:</strong></td>
+              <td id="total">PKR ${formatPrice(total)}</td>
+              <td></td>
+            </tr>
+          </tfoot>
+        </table>
+      `;
+      actions.style.display = "flex";
+    }
+
+    // Storage helpers
+    function loadCart() {
+      try {
+        const raw = localStorage.getItem(CART_KEY);
+        return raw ? JSON.parse(raw) : { items: [] };
+      } catch {
+        return { items: [] };
+      }
+    }
+
+    function saveCart() {
+      localStorage.setItem(CART_KEY, JSON.stringify(cart));
+    }
+
+    // Utils
+    function formatPrice(pkr) {
+      return (pkr / 1).toLocaleString("en-PK"); // simple PKR formatting
+    }
+
+    // Checkout (demo)
+    document.getElementById("clear-cart").addEventListener("click", clearCart);
+    document.getElementById("checkout").addEventListener("click", () => {
+      alert("This is a demo checkout. Integrate your payment gateway here.");
+    });
+
+    // Init
+    renderProducts();
+    renderCart();
+  </script>
+    
 <title>Kababish Biryani </title>
 
 <style>
@@ -132,9 +310,7 @@ margin-bottom: 30px;
     
     <p>Sindhi Biryani .</p>
     <span class="price">Rs.400/300</span>
-    <button onclick="addToCart('Biryani', Rs.400)">Add to Cart</button>
-    <button onclick="addToCart('Biryani', Rs.300)">Add to Cart</button>
-  </div>
+   
     
    
     <div class="menu-card">
@@ -142,10 +318,7 @@ margin-bottom: 30px;
     
     <p>Fried Rice< .</p>
      <p>Delicious fried rice with veggies.</p>
-    <span class="price">Rs.400/250</span>
-    <button onclick="addToCart('Fried Rice',Rs. 400)">Add to Cart</button>
-     <button onclick="addToCart('Fried Rice',Rs. 50)">Add to Cart</button>
-        </div>
+    
   
 
 
@@ -154,151 +327,27 @@ margin-bottom: 30px;
     <h3>Chowmein</h3>
     
     <span class="price">Rs.400</span>
-    <button onclick="addToCart('Chowmein',Rs. 400)">Add to Cart</button>
-  </div>
+    
 
   <div class="menu-card">
     <img src="https://th.bing.com/th/id/OIP.TxwSahfp4gBBFIIQ1XlfowHaE8?w=255&h=180&c=7&r=0&o=7&pid=1.7&rm=3" alt="Salad">
     <h5>Salad</h5>
     <p>Fresh salad with organic vegetables.</p>
-    <span class="price">Rs.300</span>
-    <button onclick="addToCart('Salad', 300)">Add to Cart</button>
-  </div>
+    
 <div class="menu-card">
     <img src="https://th.bing.com/th/id/OIP.eY7Is-lfsEJmeNib2qLQBwHaHa?w=124&h=180&c=7&r=0&o=7&pid=1.7&rm=3" alt="Minchurian"
     <h4>Minchurian</h4>
     <p>Manchurian is a class of Indian Chinese dishes made by roughly chopping and deep-frying ingredients such as chicken,.</p>
-    <span class="price">Rs.400</span>
-    <button onclick="addToCart('Salad', 300)">Add to Cart</button>
-  </div>
+    
 <div class="menu-card">
     <img src="https://th.bing.com/th/id/OIP.tbBGsaWIPD8iQ7F7La7_WgHaLH?w=115&h=180&c=7&r=0&o=7&pid=1.7&rm=3" alt="Minchurian"
     <h6>Shami Kabab</h56
     <p>Make delicious Shami Kabab that are crisp on the outside, succulent and tender inside. This recipe for shami kebab is easily adaptable and can be made with lamb, goat or chicken. The best part is you can shallow fry, pan-fry, air fry or even oven bake them for a healthier option..</p>
-    <span class="price">Rs.50</span>
-    <button onclick="addToCart('Shami',Rs. 50)">Add to Cart</button>
-  </div>
+    
 </div>
 
 <hr>
 
-<!-- CART SECTION -->
-<div class="cart">
-  <h2>Your Cart</h2>
-
-  <table id="cartTable">
-    <tr>
-      <th>Item</th>
-      <th>Qty</th>
-      <th>Price</th>
-      <th>Action</th>
-    </tr>
-  </table>
-
-  <h3>Total Amount: Rs.<span id="total">0</span></h3>
-</div>
-
-<script>
-  let cart = [];
-
-  function  addToCart(name, price) {
-    const item = cart.find(i => i.name === name);
-    if (item) {
-      item.qty++;
-    } else {
-      cart.push({ name, price, qty: 1 });
-    }
-    renderCart();
-  }
-
-  function changeQty(name, amount) {
-    const item = cart.find(i => i.name === name);
-    if (!item) return;
-
-    item.qty += amount;
-    if (item.qty <= 0) {
-      cart = cart.filter(i => i.name !== name);
-    }
-    renderCart();
-  }
-
-  function renderCart() {
-    const table = document.getElementById("cartTable");
-    const totalEl = document.getElementById("total");
-
-    table.innerHTML = `
-      <tr>
-        <th>Item</th>
-        <th>Qty</th>
-        <th>Price</th>
-        <th>Action</th>
-      </tr>
-    `;
-
-    let total = 0;
-
-    cart.forEach(item => {
-      total += item.qty * item.price;
-      table.innerHTML += `
-        <tr>
-          <td>${item.name}</td>
-          <td>${item.qty}</td>
-          <td>Rs.${item.price * item.qty}</td>
-          <td>
-            <button onclick="changeQty('${item.name}', 1)">+</button>
-            <button onclick="changeQty('${item.name}', -1)">-</button>
-          </td>
-        </tr>
-      `;
-    });
-
-    totalEl.textContent = total;
-  }
-</script>
-
-</body>
-</html>
-  <div class="menu-card">
- on>
-  </div>
-
-</div>
-
-<hr>
-
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Kababish Biryani</title>
-<style>
-:root{--accent:#ff7b00;--accent-2:#ffdd00;--card:#ffffff}
-*{box-sizing:border-box}
-body{font-family:Inter, Arial, sans-serif;margin:0;background:linear-gradient(180deg,#fff6ea 0%, #fff 100%);color:#111}
-header{background:var(--accent);color:#fff;padding:28px 20px;text-align:center}
-header h1{margin:0;font-size:28px}
-.wrap{max-width:980px;margin:28px auto;padding:0 16px}
-.hero{display:grid;grid-template-columns:1fr;gap:16px;align-items:center;padding:22px;border-radius:12px;background-image:url('https://images.unsplash.com/photo-1504674900247-0877df9cc836');background-size:cover;color:#fff}
-.hero .cta{background:rgba(0,0,0,0.35);padding:14px;border-radius:10px;display:inline-block}
-.menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:18px}
-.card{background:var(--card);padding:14px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.08);text-align:center}
-.card img{width:100%;height:140px;object-fit:cover;border-radius:8px}
-.price{font-weight:700;margin:10px 0;display:block}
-button{cursor:pointer;padding:8px 12px;border-radius:8px;border:0;background:var(--accent-2);font-weight:700}
-.cart-wrap{margin-top:26px;background:#fff9e6;padding:14px;border-radius:12px}
-table{width:100%;border-collapse:collapse}
-th,td{padding:8px;text-align:left}
-.tot{font-weight:800;font-size:18px}
-.form{margin-top:18px;background:#fff;padding:14px;border-radius:12px}
-input,textarea,select{width:100%;padding:10px;margin-top:8px;border:1px solid #ddd;border-radius:8px}
-.row{display:flex;gap:10px}
-.row > *{flex:1}
-.small{flex:0 0 120px}
-.inline-btn{display:inline-flex;gap:8px}
-footer{text-align:center;padding:18px;color:#666}
-@media(max-width:600px){.hero{padding:20px}.hero h2{font-size:20px}}
-</style>
-</head>
-<body>
-<header>
 
 
 
