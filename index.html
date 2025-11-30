@@ -43,6 +43,7 @@
       { id: 3, name: "Chowmein", price: 450 },
       { id: 4, name: "Minchurian", price: 400 },
           { id: 5, name: "Shami Kabab", price: 50 },
+        { id: 5, name: "Fresh Salad", price: 300 },
     
     ];
 
@@ -55,9 +56,9 @@
       const container = document.getElementById("products");
       container.innerHTML = PRODUCTS.map(p => `
         <div class="card">
-          <h4>${p.name}</h4>
+          <h4>${}</h4>
           <div class="price">PKR ${formatPrice(p.price)}</div>
-          <button onclick="addToCart(${p.id})">Add to cart</button>
+          <button> click on button="addToCart(${p.id})">Add to cart</button>
         </div>
       `).join("");
     }
@@ -310,6 +311,11 @@ margin-bottom: 30px;
     
     <p>Sindhi Biryani .</p>
     <span class="price">Rs.400/300</span>
+        <div class="card">
+          <h4>Rs.{Sindhi Biryani}</h4>
+          <div class="price">PKR ${formatPrice(p.price)}</div>
+          <button> click on button="addToCart(${p.id})">Add to cart</button>
+        </div>
    
     
    
@@ -318,6 +324,11 @@ margin-bottom: 30px;
     
     <p>Fried Rice< .</p>
      <p>Delicious fried rice with veggies.</p>
+         <div class="card">
+          <h4>Rs.{Fried Rice}</h4>
+          <div class="price">PKR ${formatPrice(p.price)}</div>
+          <button> click on button="addToCart(${p.id})">Add to cart</button>
+        </div>
     
   
 
@@ -327,23 +338,43 @@ margin-bottom: 30px;
     <h3>Chowmein</h3>
     
     <span class="price">Rs.400</span>
+       <div class="card">
+          <h4>Rs.{Chowmein}</h4>
+          <div class="price">PKR ${formatPrice(p.price)}</div>
+          <button> click on button="addToCart(${p.id})">Add to cart</button>
+        </div>
     
 
   <div class="menu-card">
     <img src="https://th.bing.com/th/id/OIP.TxwSahfp4gBBFIIQ1XlfowHaE8?w=255&h=180&c=7&r=0&o=7&pid=1.7&rm=3" alt="Salad">
     <h5>Salad</h5>
     <p>Fresh salad with organic vegetables.</p>
+       <div class="card">
+    <h5>Salad</h5>
+          <h4>Rs.{}</h4>
+          <div class="price">PKR ${formatPrice(p.price)}</div>
+          <button> click on button="addToCart(${p.id})">Add to cart</button>
+        </div>
     
 <div class="menu-card">
     <img src="https://th.bing.com/th/id/OIP.eY7Is-lfsEJmeNib2qLQBwHaHa?w=124&h=180&c=7&r=0&o=7&pid=1.7&rm=3" alt="Minchurian"
     <h4>Minchurian</h4>
     <p>Manchurian is a class of Indian Chinese dishes made by roughly chopping and deep-frying ingredients such as chicken,.</p>
+     <div class="card">
+          <h4>Rs.{>Minchurian}</h4>
+          <div class="price">PKR ${formatPrice(p.price)}</div>
+          <button> click on button="addToCart(${p.id})">Add to cart</button>
+        </div>
     
 <div class="menu-card">
     <img src="https://th.bing.com/th/id/OIP.tbBGsaWIPD8iQ7F7La7_WgHaLH?w=115&h=180&c=7&r=0&o=7&pid=1.7&rm=3" alt="Minchurian"
     <h6>Shami Kabab</h56
     <p>Make delicious Shami Kabab that are crisp on the outside, succulent and tender inside. This recipe for shami kebab is easily adaptable and can be made with lamb, goat or chicken. The best part is you can shallow fry, pan-fry, air fry or even oven bake them for a healthier option..</p>
-    
+     <div class="card">
+          <h4>Rs.{Shami Kabab}</h4>
+          <div class="price">PKR ${formatPrice(p.price)}</div>
+          <button> click on button="addToCart(${p.id})">Add to cart</button>
+        </div>
 </div>
 
 <hr>
