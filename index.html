@@ -124,6 +124,22 @@ margin-bottom: 30px;
   <div class="menu-card">
     <img src="https://images.unsplash.com/photo-1604908177522-0404f7c61f1b" alt="Biryani">
     <h3>Biryani</h3>
+      <style>
+          font-family: sans-serif;
+            text-align: center;
+        }
+        img {
+            /* Ensures the image doesn't exceed the width of its container */
+            max-width: 100%;
+            /* Maintains the aspect ratio */
+            height: auto;
+            /* Optional: adds some styling */
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            padding: 5px;
+            margin-top: 20px;
+        }
+          </style>
     <p>Sindhi Biryani.</p>
     <span class="price">Rs.350</span>
     <button onclick="addToCart('Biryani', 350)">Add to Cart</button>
@@ -132,6 +148,22 @@ margin-bottom: 30px;
   <div class="menu-card">
     <img src="https://images.unsplash.com/photo-1601314158135-76af6e3b36b9" alt="Fried Rice">
     <h3>Fried Rice</h3>
+      <style>
+        body {
+            font-family: sans-serif;
+            text-align: center;
+        }
+        img {
+            /* Responsive styling for the image */
+            max-width: 100%;
+            height: auto;
+            border: 3px solid #f0a500;
+            border-radius: 8px;
+            padding: 5px;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+      </style>
     <p>Delicious fried rice with veggies.</p>
     <span class="price">Rs.400</span>
     <button onclick="addToCart('Fried Rice', 400)">Add to Cart</button>
