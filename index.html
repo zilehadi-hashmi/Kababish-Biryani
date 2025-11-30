@@ -4,6 +4,167 @@
 <meta charset="UTF-8">
 <title>Kababish Biryani</title>
 
+<style>
+body {
+font-family: Arial, sans-serif;
+padding: 20px;
+max-width: 900px;
+margin: auto;
+background-color: orange;
+color: black;
+}
+
+    /* Hero Section */
+    .hero {
+      background: url("images.unsplash.com") center/cover;
+      padding: 60px;
+      border-radius: 10px;
+      text-align: center;
+      color: white;
+      margin-bottom: 30px;
+    }
+    .hero h1 {
+      font-size: 40px;
+    }
+    .hero p {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .btn {
+      background: yellow;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+      color: black;
+    }
+
+    /* Menu styling */
+    .menu-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .menu-card {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    .menu-card img {
+      width: 200px;
+      border-radius: 10px;
+    }
+
+    .price {
+      font-weight: bold;
+      display: block;
+      margin: 10px 0;
+    }
+
+    button {
+      cursor: pointer;
+      padding: 6px 12px;
+      background: #ffdd00;
+      border: none;
+      border-radius: 5px;
+      color: black;
+      font-weight: bold;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+      background: #fff3cc;
+    }
+
+    th, td {
+      padding: 10px;
+      border-bottom: 1px solid #444;
+      text-align: left;
+    }
+
+    .cart {
+      margin-top: 30px;
+      border-top: 2px solid #000;
+      padding-top: 20px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+<!-- HERO SECTION -->
+<header class="hero">
+  <h1>Welcome to Kababish Biryani</h1>
+  <p>Delicious Meals • Amazing Taste • Fresh Ingredients</p>
+  <a href="#menu" class="btn">Explore Menu</a>
+</header>
+
+<h2 id="menu">Our Food Menu</h2>
+
+<!-- MENU GRID -->
+<div class="menu-container">
+
+  <div class="menu-card">
+    <!-- FIX APPLIED: Using a full, valid web URL -->
+    <img src="images.unsplash.com" alt="Biryani">
+    <h3>Biryani</h3>
+    <span class="price">$12.99</span>
+    <button>Add to Cart</button>
+  </div>
+
+  <div class="menu-card">
+    <!-- This image URL was working fine in my previous response -->
+    <img src="images.unsplash.com" alt="Fried Rice">
+    <h3>Fried Rice</h3>
+    <span class="price">$10.99</span>
+    <button>Add to Cart</button>
+  </div>
+  
+</div>
+
+<!-- Example Cart Table -->
+<div class="cart">
+  <h2>Your Cart</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Price</th>
+        <th>Quantity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Biryani</td>
+        <td>$12.99</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>Fried Rice</td>
+        <td>$10.99</td>
+        <td>1</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>
+ html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Kababish Biryani</title>
+
 
 <style>
 body {
