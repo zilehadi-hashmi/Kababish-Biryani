@@ -1,43 +1,97 @@
+
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Admin - Orders</title>
+
+<style>
+    body{font-family:Arial,Helvetica,sans-serif;background:#f5f5f5;margin:0;padding:20px}
+    .wrap{max-width:900px;margin:auto}
+    .card{
+        background:#fff;
+        padding:16px;
+        margin-top:12px;
+        border-radius:10px;
+        box-shadow:0 2px 6px rgba(0,0,0,0.1);
+        white-space:pre-wrap;
+    }
+</style>
+
 <script>
 async function loadOrders(){
-    const url = document.getElementById('rawUrl').value.trim();
+    const urlField = document.getElementById('rawUrl');
+    if(!urlField){
+        console.error("rawUrl input not found");
+        return;
+    }
+
+    const url = urlField.value.trim();
+    const ordersBox = document.getElementById('orders');
+
+    if(!url){
+        ordersBox.innerHTML = '<div style="padding:12px;color:red">URL is empty</div>';
+        return;
+    }
+
     try{
         const res = await fetch(url);
-        if(!res.ok) throw new Error('Failed to fetch orders');
-        
-        const data = await res.json();
-        const node = document.getElementById('orders');
-        node.innerHTML='';
+        if(!res.ok) throw new Error('Failed to fetch');
 
-        if(!Array.isArray(data) || data.length===0){
-            node.innerHTML = '<div style="padding:12px;color:#666">No orders found</div>';
+        const data = await res.json();
+        ordersBox.innerHTML = '';
+
+        if(!Array.isArray(data) || data.length === 0){
+            ordersBox.innerHTML = '<div style="padding:12px;color:#666">No orders found</div>';
             return;
         }
 
-        data.slice().reverse().forEach((o,i)=>{
+        data.slice().reverse().forEach((o, i) => {
             const div = document.createElement('div');
-            div.className='card';
+            div.className = 'card';
             div.innerHTML = `
                 <div style="display:flex;justify-content:space-between;align-items:center">
                     <strong>Order #${data.length - i}</strong>
                     <small>${o.time || ''}</small>
                 </div>
                 <div style="margin-top:8px">
-                    <pre>${JSON.stringify(o,null,2)}</pre>
-                </div>`;
-            node.appendChild(div);
+                    <pre>${JSON.stringify(o, null, 2)}</pre>
+                </div>
+            `;
+            ordersBox.appendChild(div);
         });
 
-    }catch(err){
+    } catch (err) {
         console.error(err);
-        document.getElementById('orders').innerHTML =
-            '<div style="padding:12px;color:red">Failed to load orders</div>';
+        ordersBox.innerHTML = '<div style="padding:12px;color:red">Failed to load orders</div>';
     }
 }
+</script>
 
-loadOrders();
-          </script>
 </head>
-    <html>
+
+<body>
+<div class="wrap">
+    <h2>Load Orders</h2>
+
+    <input 
+        id="rawUrl"
+        type="text"
+        placeholder="Enter JSON orders URL"
+        style="width:100%;padding:10px;border-radius:8px;border:1px solid #ccc"
+    />
+
+    <button onclick="loadOrders()" 
+            style="margin-top:12px;padding:10px 20px;border:none;background:#ff7b00;color:white;border-radius:8px;cursor:pointer;">
+        Load Orders
+    </button>
+
+    <div id="orders" style="margin-top:20px"></div>
+</div>
+</body>
+</html>
+
+
