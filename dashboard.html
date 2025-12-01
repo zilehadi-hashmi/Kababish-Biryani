@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Orders Dashboard</title>
+<style>
+    body { font-family: Arial; background: orange; padding: 20px; }
+    .order {
+        background: white; padding: 15px; margin-bottom: 15px;
+        border-radius: 10px; border-left: 6px solid black;
+    }
+</style>
+</head>
+
+<body>
+
+<h2>All Orders 📦</h2>
+<div id="orders"></div>
+
+<script>
+function loadOrders() {
+    let orders = JSON.parse(localStorage.getItem("orders")) || [];
+    let container = document.getElementById("orders");
+
+    container.innerHTML = "";
+
+    orders.forEach((order, index) => {
+        container.innerHTML += `
+            <div class="order">
+                <h3>Order #${index + 1}</h3>
+                <p><b>Name:</b> ${order.name}</p>
+                <p><b>Food:</b> ${order.food}</p>
+                <p><b>Qty:</b> ${order.qty}</p>
+                <p><b>Address:</b> ${order.address}</p>
+                <p><b>Time:</b> ${order.time}</p>
+            </div>
+        `;
+    });
+}
+
+loadOrders();
+</script>
+
+</body>
+</html>
+
+ 
