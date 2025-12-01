@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Place Order</title>
+<style>
+    body { font-family: Arial; background: orange; padding: 20px; }
+    .box { background: white; padding: 20px; border-radius: 12px; }
+    input, textarea {
+        width: 100%; padding: 10px; margin-top: 12px;
+        border: 1px solid #777; border-radius: 5px;
+    }
+    button {
+        background: black; color: white; padding: 12px;
+        border: none; width: 100%; border-radius: 5px;
+        margin-top: 15px; font-size: 16px;
+    }
+</style>
+</head>
+
+<body>
+
+<h2>Order Form 🍛</h2>
+
+<div class="box">
+    <form id="orderForm">
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="text" id="food" placeholder="Food Item" required>
+        <input type="number" id="qty" placeholder="Quantity" required>
+        <textarea id="address" placeholder="Address" required></textarea>
+        <button type="button" onclick="saveOrder()">Submit Order</button>
+    </form>
+</div>
+
+<script>
+function saveOrder() {
+    let order = {
+        name: document.getElementById("name").value,
+        food: document.getElementById("food").value,
+        qty: document.getElementById("qty").value,
+        address: document.getElementById("address").value,
+        time: new Date().toLocaleString()
+    };
+
+    let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+    orders.push(order);
+    localStorage.setItem("orders", JSON.stringify(orders));
+
+    alert("Order submitted!");
+
+    document.getElementById("orderForm").reset();
+}
+</script>
+
+</body>
+</html>
+
+
+
+
+ 
+ 
