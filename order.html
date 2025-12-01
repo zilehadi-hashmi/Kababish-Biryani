@@ -3,40 +3,37 @@
 <head>
 <title>Place Order</title>
 <style>
-    body {
-        font-family: Arial;
-        background: #ff8c00;
-        padding: 30px;
-        color: white;
+   
+   
+   
+   <script>
+window.onload = function () {
+    let cartItems = JSON.parse(localStorage.getItem("menuCart")) || [];
+    if (cartItems.length > 0) {
+        document.getElementById("food").value = cartItems.join(", ");
     }
-    .container {
-        background: white;
-        color: black;
-        padding: 25px;
-        border-radius: 14px;
-        max-width: 500px;
-        margin: auto;
-        box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    }
-    input, textarea {
-        width: 100%; 
-        padding: 12px; 
-        margin-top: 12px;
-        border-radius: 7px; 
-        border: 1px solid gray;
-        font-size: 15px;
-    }
-    button {
-        width: 100%;
-        padding: 14px;
-        margin-top: 15px;
-        background: black;
-        color: white;
-        border: none;
-        border-radius: 8px;
-        font-size: 17px;
-        cursor: pointer;
-    }
+};
+
+function saveOrder() {
+    let order = {
+        name: document.getElementById("name").value,
+        food: document.getElementById("food").value,
+        qty: document.getElementById("qty").value,
+        address: document.getElementById("address").value,
+        time: new Date().toLocaleString(),
+        delivered: false
+    };
+
+    let orders = JSON.parse(localStorage.getItem("orders")) || [];
+    orders.push(order);
+    localStorage.setItem("orders", JSON.stringify(orders));
+
+    localStorage.removeItem("menuCart"); // clear cart
+
+    alert("Order Submitted!");
+    document.getElementById("orderForm").reset();
+}
+</script>
 </style>
 </head>
 
