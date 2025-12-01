@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Online Menu</title>
+<style>
+    body {
+        font-family: Arial;
+        background: #ff8c00;
+        padding: 20px;
+        color: white;
+    }
+    h2 { text-align:center; }
+    .menu {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+        margin-top: 20px;
+    }
+    .item {
+        background: white;
+        color: black;
+        padding: 15px;
+        border-radius: 12px;
+        text-align: center;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+    .item img {
+        width: 100%;
+        border-radius: 10px;
+    }
+    button {
+        margin-top: 10px;
+        padding: 10px;
+        background: black;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        width: 100%;
+    }
+    #cartBtn {
+        background: green;
+        padding: 14px;
+        margin-top: 20px;
+        width: 100%;
+        font-size: 18px;
+        border-radius: 8px;
+    }
+</style>
+</head>
+
+<body>
+
+<h2>🍽 Our Menu</h2>
+
+<div class="menu">
+
+    <div class="item">
+        <img src="https://i.ibb.co/7vZHVVn/biryani.jpg">
+        <h3>Chicken Biryani</h3>
+        <p>Rs 250</p>
+        <button onclick="addToCart('Chicken Biryani')">Add to Order</button>
+    </div>
+
+    <div class="item">
+        <img src="https://i.ibb.co/NxnCgy7/burger.jpg">
+        <h3>Zinger Burger</h3>
+        <p>Rs 300</p>
+        <button onclick="addToCart('Zinger Burger')">Add to Order</button>
+    </div>
+
+    <div class="item">
+        <img src="https://i.ibb.co/tz2y7Z0/roll.jpg">
+        <h3>Chicken Roll</h3>
+        <p>Rs 150</p>
+        <button onclick="addToCart('Chicken Roll')">Add to Order</button>
+    </div>
+
+</div>
+
+<button id="cartBtn" onclick="goToOrder()">Proceed to Checkout 🛒</button>
+
+<script>
+let cart = [];
+
+function addToCart(item) {
+    cart.push(item);
+    alert(item + " added to cart!");
+    localStorage.setItem("menuCart", JSON.stringify(cart));
+}
+
+function goToOrder() {
+    window.location.href = "order.html";
+}
+</script>
+
+</body>
+</html>
