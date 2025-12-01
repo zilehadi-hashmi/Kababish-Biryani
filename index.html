@@ -12,131 +12,275 @@
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <style>
+  <
+<meta charset="UTF-8">
+<title>Kababish Biryani</title>
+
+<style>
     body {
-      font-family: Arial, sans-serif;
-      margin: 0; 
-      padding: 0;
-      background: #ff8c00; 
-      color: black;
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        max-width: 900px;
+        margin: auto;
+        background: white;
+        color: black;
     }
 
-    header {
-      text-align: center;
-      padding: 25px;
-      background: #ff7600;
-      color: white;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    /* HERO */
+    .hero {
+        background: url("https://tse3.mm.bing.net/th/id/OIP.7FbzcQok1neSoNj1Tat93wHaHa?rs=1&pid=ImgDetMain") center/cover;
+        padding: 60px;
+        border-radius: 20px;
+        text-align: center;
+        color: orange;
+        margin-bottom: 40px;
+    }
+    .hero img {
+        width: 250px;
+        border-radius: 12px;
+        margin-bottom: 10px;
+    }
+    .hero h1 { font-size: 40px; margin: 10px 0; }
+    .hero p { font-size: 16px; }
+    .btn {
+        display: inline-block;
+        margin-top: 10px;
+        background: black;
+        color: orange;
+        padding: 10px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
     }
 
-    .hero-img {
-      width: 100%;
-      height: 260px;
-      background-image: url("https://images.unsplash.com/photo-1604908177793-24b173a2a906");
-      background-size: cover;
-      background-position: center;
-      border-bottom: 4px solid #fff;
+    /* PRODUCT GRID */
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 16px;
     }
-
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 20px;
-    }
-
     .card {
-      background: white;
-      padding: 18px;
-      border-radius: 12px;
-      margin-bottom: 15px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 12px;
+        text-align: center;
+        background: orange;
     }
-
-    .card-title {
-      font-size: 22px;
-      font-weight: bold;
-      margin-bottom: 8px;
+    .price {
+        font-weight: bold;
+        margin: 6px 0;
+        color: black;
     }
-
-    .icon {
-      color: #ff7600;
-      margin-right: 6px;
+    .card button {
+        cursor: pointer;
+        padding: 8px 12px;
+        border: none;
+        border-radius: 6px;
+        background: black;
+        color: orange;
     }
+    .card button:hover { background: #222; }
 
-    button {
-      padding: 10px 20px;
-      background: #ff7600;
-      border: none;
-      color: white;
-      font-size: 16px;
-      border-radius: 6px;
-      cursor: pointer;
+    /* CART */
+    #cart table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+        background: #fff3cc;
     }
-
-    button:hover {
-      background: #e96b00;
+    #cart th, #cart td {
+        padding: 10px;
+        border-bottom: 1px solid #444;
+        text-align: left;
     }
-  </style>
-
+    #cart-actions { margin-top: 12px; display: flex; gap: 8px; }
+    .qty { width: 60px; }
+    .empty { color: orange; font-weight: bold; }
+</style>
 </head>
+
 <body>
 
-  <header>
-    <h1><i class="fa-solid fa-bowl-food"></i> Kababish Biryani</h1>
-    <p>Delicious • Fresh • Spicy</p>
-  </header>
+<!-- HERO SECTION -->
+<header class="hero">
+    <img src="https://tse3.mm.bing.net/th/id/OIP.7FbzcQok1neSoNj1Tat93wHaHa?rs=1&pid=ImgDetMain">
+    <h1>Welcome to Kababish Biryani</h1>
 
-  <div class="hero-img"></div>
+    <p>
+        Contact: 0307-0676579<br>
+        Address: Shop #10, Ehsan Commercial Center, CMH Chowk, Bahawalpur<br>
+        Timing: 11:00 AM – 10:00 PM<br>
+        Delicious Meals • Fresh Ingredients
+    </p>
 
-  <div class="container">
+    <a href="#menu" class="btn">Explore Menu</a>
+</header>
 
-    <div class="card">
-      <div class="card-title">
-        <i class="fa-solid fa-utensils icon"></i>
-        Chicken Biryani
-      </div>
-      <p>Freshly cooked traditional biryani.</p>
-      <button><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
+
+
+<h2 id="menu">Our Products</h2>
+
+<!-- PRODUCT GRID -->
+<div id="products" class="grid"></div>
+
+
+<!-- CART -->
+<div id="cart">
+    <h2>Your Cart</h2>
+    <div id="cart-content" class="empty">Your cart is empty.</div>
+
+    <div id="cart-actions" style="display:none;">
+        <button id="clear-cart">Clear Cart</button>
+        <button id="checkout">Checkout</button>
     </div>
+</div>
 
-    <div class="card">
-      <div class="card-title">
-        <i class="fa-solid fa-drumstick-bite icon"></i>
-        Tikka Biryani
-      </div>
-      <p>Smoky tikka mixed with premium rice.</p>
-      <button><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
-    </div>
 
-    <div class="card">
-      <div class="card-title">
-        <i class="fa-solid fa-bottle-water icon"></i>
-        Drinks
-      </div>
-      <p>Cold drinks and mineral water.</p>
-      <button><i class="fa-solid fa-cart-plus"></i> Add to Cart</button>
-    </div>
+<script>
+/* ---------------- PRODUCTS ---------------- */
+const PRODUCTS = [
+    { id: 1, name: "Sindhi Biryani", price: 400 },
+    { id: 2, name: "Fried Rice", price: 200 },
+    { id: 3, name: "Chowmein", price: 450 },
+    { id: 4, name: "Manchurian", price: 400 },
+    { id: 5, name: "Shami Kabab", price: 50 },
+    { id: 6, name: "Fresh Salad", price: 300 }
+];
 
-  </div>
+/* ---------------- CART SYSTEM ---------------- */
+const CART_KEY = "demo_cart_v1";
+let cart = loadCart();
+
+/* Render Products */
+function renderProducts() {
+    const container = document.getElementById("products");
+
+    container.innerHTML = PRODUCTS.map(p => `
+        <div class="card">
+            <h3>${p.name}</h3>
+            <div class="price">PKR ${formatPrice(p.price)}</div>
+            <button onclick="addToCart(${p.id})">Add to Cart</button>
+        </div>
+    `).join("");
+}
+
+/* Add to Cart */
+function addToCart(productId) {
+    const product = PRODUCTS.find(p => p.id === productId);
+    if (!product) return;
+
+    const existing = cart.items.find(i => i.id === productId);
+
+    if (existing) {
+        existing.qty += 1;
+    } else {
+        cart.items.push({ ...product, qty: 1 });
+    }
+
+    saveCart();
+    renderCart();
+}
+
+/* Remove Item */
+function removeItem(productId) {
+    cart.items = cart.items.filter(i => i.id !== productId);
+    saveCart();
+    renderCart();
+}
+
+/* Update Quantity */
+function updateQty(productId, qty) {
+    qty = Math.max(1, parseInt(qty || "1"));
+    const item = cart.items.find(i => i.id === productId);
+    if (item) item.qty = qty;
+
+    saveCart();
+    renderCart();
+}
+
+/* Clear Cart */
+function clearCart() {
+    cart.items = [];
+    saveCart();
+    renderCart();
+}
+
+/* Render Cart */
+function renderCart() {
+    const content = document.getElementById("cart-content");
+    const actions = document.getElementById("cart-actions");
+
+    if (cart.items.length === 0) {
+        content.innerHTML = `<div class="empty">Your cart is empty.</div>`;
+        actions.style.display = "none";
+        return;
+    }
+
+    const rows = cart.items.map(i => `
+        <tr>
+            <td>${i.name}</td>
+            <td>PKR ${formatPrice(i.price)}</td>
+            <td><input type="number" class="qty" min="1" value="${i.qty}" onchange="updateQty(${i.id}, this.value)"></td>
+            <td>PKR ${formatPrice(i.price * i.qty)}</td>
+            <td><button onclick="removeItem(${i.id})">Remove</button></td>
+        </tr>
+    `).join("");
+
+    const total = cart.items.reduce((sum, i) => sum + i.price * i.qty, 0);
+
+    content.innerHTML = `
+        <table>
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Price</th>
+                    <th>Qty</th>
+                    <th>Subtotal</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>${rows}</tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3" style="text-align:right;"><strong>Total:</strong></td>
+                    <td><strong>PKR ${formatPrice(total)}</strong></td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+    `;
+
+    actions.style.display = "flex";
+}
+
+/* Helpers */
+function loadCart() {
+    try {
+        const raw = localStorage.getItem(CART_KEY);
+        return raw ? JSON.parse(raw) : { items: [] };
+    } catch {
+        return { items: [] };
+    }
+}
+function saveCart() {
+    localStorage.setItem(CART_KEY, JSON.stringify(cart));
+}
+function formatPrice(p) {
+    return p.toLocaleString("en-PK");
+}
+
+/* Checkout */
+document.getElementById("clear-cart").onclick = clearCart;
+document.getElementById("checkout").onclick = () => alert("Demo checkout! Add real payment later.");
+
+/* Init */
+renderProducts();
+renderCart();
+</script>
 
 </body>
 </html>
 
-
-
-
-
-
-
-
-
-
-ChatGPT can make
-
-
-    
-
-
-
+   
 
 
