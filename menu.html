@@ -10,11 +10,50 @@
         color: white;
     }
     h2 { text-align:center; }
+
+    /* SLIDER */
+    .slider {
+        width: 100%;
+        max-width: 900px;
+        height: 250px;
+        margin: auto;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    }
+    .slides {
+        width: 500%;
+        height: 100%;
+        display: flex;
+        animation: slide 12s infinite;
+    }
+    .slides img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    @keyframes slide {
+        0%  { margin-left: 0; }
+        20% { margin-left: 0; }
+
+        25% { margin-left: -100%; }
+        45% { margin-left: -100%; }
+
+        50% { margin-left: -200%; }
+        70% { margin-left: -200%; }
+
+        75% { margin-left: -300%; }
+        95% { margin-left: -300%; }
+
+        100% { margin-left: -400%; }
+    }
+
+    /* MENU ITEMS */
     .menu {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
         gap: 20px;
-        margin-top: 20px;
+        margin-top: 30px;
     }
     .item {
         background: white;
@@ -51,8 +90,20 @@
 
 <body>
 
-<h2>🍽 Our Menu</h2>
+<h2>🍽 Our Food Menu</h2>
 
+<!-- 🔥 IMAGE SLIDER -->
+<div class="slider">
+    <div class="slides">
+        <img src="https://i.ibb.co/7vZHVVn/biryani.jpg" alt="Biryani">
+        <img src="https://i.ibb.co/NxnCgy7/burger.jpg" alt="Burger">
+        <img src="https://i.ibb.co/tz2y7Z0/roll.jpg" alt="Roll">
+        <img src="https://i.ibb.co/jbs42Kn/fries.jpg" alt="Fries">
+        <img src="https://i.ibb.co/FgzP4XM/drink.jpg" alt="Drink">
+    </div>
+</div>
+
+<!-- MENU ITEMS -->
 <div class="menu">
 
     <div class="item">
@@ -85,8 +136,8 @@ let cart = [];
 
 function addToCart(item) {
     cart.push(item);
-    alert(item + " added to cart!");
     localStorage.setItem("menuCart", JSON.stringify(cart));
+    alert(item + " added to cart!");
 }
 
 function goToOrder() {
@@ -96,3 +147,5 @@ function goToOrder() {
 
 </body>
 </html>
+🎉 Your menu now has a beautiful auto-sliding hero banner!
+Looks like a professio
