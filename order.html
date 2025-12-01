@@ -7,6 +7,7 @@
    
    
    <script>
+<script>
 window.onload = function () {
     let cartItems = JSON.parse(localStorage.getItem("menuCart")) || [];
     if (cartItems.length > 0) {
@@ -34,42 +35,7 @@ function saveOrder() {
     document.getElementById("orderForm").reset();
 }
 </script>
-</style>
-</head>
 
-<body>
-
-<h2 style="text-align:center;">🍽 Place Your Order</h2>
-
-<div class="container">
-    <form id="orderForm">
-        <input type="text" id="name" placeholder="Your Name" required>
-        <input type="text" id="food" placeholder="Food Item" required>
-        <input type="number" id="qty" placeholder="Quantity" required>
-        <textarea id="address" placeholder="Address" required></textarea>
-
-        <button type="button" onclick="saveOrder()">Submit Order</button>
-    </form>
-</div>
-
-<script>
-function saveOrder() {
-    let order = {
-        name: document.getElementById("name").value,
-        food: document.getElementById("food").value,
-        qty: document.getElementById("qty").value,
-        address: document.getElementById("address").value,
-        time: new Date().toLocaleString(),
-        delivered: false
-    };
-
-    let orders = JSON.parse(localStorage.getItem("orders")) || [];
-    orders.push(order);
-    localStorage.setItem("orders", JSON.stringify(orders));
-
-    alert("Order Submitted!");
-    document.getElementById("orderForm").reset();
-}
 </script>
 
 </body>
