@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Checkout - Kababish Biryani</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      background: #ff8c00;
+      padding: 20px;
+      color: black;
+    }
+
+    .box {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 700px;
+      margin: auto;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    button {
+      background: #ff7600;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #e96b00;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h1>Checkout</h1>
+    <p>Review your order before placing it.</p>
+
+    <div id="checkout-area"></div>
+
+    <button onclick="placeOrder()">Confirm Order</button>
+  </div>
+
+<script>
+const CART_KEY = "demo_cart_v1";
+
+function loadCart() {
+  const raw = localStorage.getItem(CART_KEY);
+  return raw ? JSON.parse(raw) : { items: [] };
+}
+
+function renderCheckout() {
+  const cart = loadCart();
+  const area = document.getElementById("checkout-area");
+
+  if (cart.items.length === 0) {
+    area.innerHTML = "<h3>Your cart is empty.</h3>";
+    return;
+  }
+
+  let rows = "";
+  let total = 0;
+
+  cart.items.forEach(i => {
+    const subtotal = i.price * i.qty;
+    total += subtotal;
+
+    rows += `
+    <tr>
+      <td>.s,{i.name}</td>
+      <td>PKR Rs..{i.price}</td>
+      <td>${i.qty}</td>
+      <td>PKR ${subtotal}</td>
+    </tr>`;
+  });
+
+  area.innerHTML = `
+    <table>
+      <tr>
+        <th>Item</th>
+        <th>Price</th>
+        <th>Qty</th>
+        <th>Total</th>
+      </tr>
+      Rs,{rows}
+    </table>
+
+    <h2>Total Bill: PKR ${total}</h2>
+  `;
+}
+
+function placeOrder() {
+  alert("Your order has been placed!");
+  localStorage.removeItem(CART_KEY);
+  window.location.href = "index.html";
+}
+
+renderCheckout();
+</script>
+
+</body>
+</html>
