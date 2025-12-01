@@ -3,30 +3,54 @@
 <head>
 <title>Place Order</title>
 <style>
-    body { font-family: Arial; background: orange; padding: 20px; }
-    .box { background: white; padding: 20px; border-radius: 12px; }
+    body {
+        font-family: Arial;
+        background: #ff8c00;
+        padding: 30px;
+        color: white;
+    }
+    .container {
+        background: white;
+        color: black;
+        padding: 25px;
+        border-radius: 14px;
+        max-width: 500px;
+        margin: auto;
+        box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    }
     input, textarea {
-        width: 100%; padding: 10px; margin-top: 12px;
-        border: 1px solid #777; border-radius: 5px;
+        width: 100%; 
+        padding: 12px; 
+        margin-top: 12px;
+        border-radius: 7px; 
+        border: 1px solid gray;
+        font-size: 15px;
     }
     button {
-        background: black; color: white; padding: 12px;
-        border: none; width: 100%; border-radius: 5px;
-        margin-top: 15px; font-size: 16px;
+        width: 100%;
+        padding: 14px;
+        margin-top: 15px;
+        background: black;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 17px;
+        cursor: pointer;
     }
 </style>
 </head>
 
 <body>
 
-<h2>Order Form 🍛</h2>
+<h2 style="text-align:center;">🍽 Place Your Order</h2>
 
-<div class="box">
+<div class="container">
     <form id="orderForm">
         <input type="text" id="name" placeholder="Your Name" required>
         <input type="text" id="food" placeholder="Food Item" required>
         <input type="number" id="qty" placeholder="Quantity" required>
         <textarea id="address" placeholder="Address" required></textarea>
+
         <button type="button" onclick="saveOrder()">Submit Order</button>
     </form>
 </div>
@@ -38,25 +62,18 @@ function saveOrder() {
         food: document.getElementById("food").value,
         qty: document.getElementById("qty").value,
         address: document.getElementById("address").value,
-        time: new Date().toLocaleString()
+        time: new Date().toLocaleString(),
+        delivered: false
     };
 
     let orders = JSON.parse(localStorage.getItem("orders")) || [];
-
     orders.push(order);
     localStorage.setItem("orders", JSON.stringify(orders));
 
-    alert("Order submitted!");
-
+    alert("Order Submitted!");
     document.getElementById("orderForm").reset();
 }
 </script>
 
 </body>
 </html>
-
-
-
-
- 
- 
