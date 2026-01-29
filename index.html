@@ -1,212 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kababish Biryani</title>
-
-  <!-- Website Icon -->
-  <link rel="icon" type="image/png" href="android-chrome-192x192.png">
-
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-  <
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kababish Biryani</title>
 
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        padding: 20px;
-        max-width: 900px;
-        margin: auto;
-        background: white;
-        color: black;
-    }
-
-    /* HERO */
-    .hero {
-        background: url("https://tse3.mm.bing.net/th/id/OIP.7FbzcQok1neSoNj1Tat93wHaHa?rs=1&pid=ImgDetMain") center/cover;
-        padding: 60px;
-        border-radius: 20px;
-        text-align: center;
-        color: orange;
-        margin-bottom: 40px;
-    }
-    .hero img {
-        width: 250px;
-        border-radius: 12px;
-        margin-bottom: 10px;
-    }
-    .hero h1 { font-size: 40px; margin: 10px 0; }
-    .hero p { font-size: 16px; }
-    .btn {
-        display: inline-block;
-        margin-top: 10px;
-        background: black;
-        color: orange;
-        padding: 10px 20px;
-        border-radius: 8px;
-        text-decoration: none;
-        font-weight: bold;
-    }
-
-    /* PRODUCT GRID */
-  
+<link rel="icon" href="android-chrome-192x192.png">
 
 <style>
-    body {
-        font-family: Arial;
-        background: #ff8c00;
-        padding: 20px;
-        color: white;
-    }
-    h2 { text-align:center; }
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 15px;
+    max-width: 1000px;
+    margin: auto;
+    background: #fff;
+    color: #000;
+}
 
-    
+/* HERO */
+.hero {
+    background: url("https://images.unsplash.com/photo-1604908177522-402f03fb6f6d") center/cover;
+    padding: 60px 20px;
+    border-radius: 20px;
+    text-align: center;
+    color: orange;
+}
+
+.hero img {
+    width: 200px;
+    border-radius: 12px;
+}
+
+.hero h1 {
+    font-size: 38px;
+    margin: 10px 0;
+}
+
+.hero p {
+    background: rgba(0,0,0,0.6);
+    display: inline-block;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* MENU */
+h2 {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.menu {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: orange;
+    padding: 15px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.price {
+    font-weight: bold;
+    color: black;
+}
+
+.card button {
+    background: black;
+    color: orange;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* ORDER FORM */
+.order-box {
+    background: #fff3cc;
+    padding: 20px;
+    border-radius: 15px;
+    margin-top: 40px;
+}
+
+.order-box input,
+.order-box textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+}
+
+.order-box button {
+    background: black;
+    color: orange;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    font-size: 16px;
+}
+</style>
+</head>
+
 <body>
 
-<10nMysSTuDqA3E7HMVXlJ7Tq/A5+8e7M4/lwASsiCmmNLis7QqeU7J/DSxjJa0C7fXeHV1s+tGOrwFb+9JWad2D/42qxC9dnL4QPv40gIB3WR5OQUB8cDxDri5aba30zmgMTwlFJjrGDvRBzQatvCWqOsIoY4HCAZqt7AEYbhvjQIsNLT4RFbbYPBZ7cJvgI0PA32XReQi2yplAGDhlyoiyU5LZDaubOKlamDbDut+2hoVM+2bm4T75Y314eOvga6nPdfkmNoRpw8nlGUZM/uirmvou+4VaCbFvoePL6XU0+Ue1jsjbpj/PlIUlCToFNixqXnKWgzWdKaRDKs50agT5ZwvMbfP/UqRc16GlsDzZ8dvSaVbqW9YcinM610EuLXqPcq9y4/iWajllyIQZtXcx1k2BAkySfdt58RFck7mul0TZHYuVvDASzOyioIxzQuB5LCA3wFHj8mAQModtsFdcqLDFJNU68Ux/a3sZgHG/vq7L+uAPFpURWSALHiZbqpNgQXLMIFu2+XqLFyguhAwjir17HhNa8hSrBNy4CV92mF4ZDtoTxVLF0ePnLdCsVZLhcTOkLKTwKbmupSVfNq2Sa9gsuYWoirqPoWoeS0RQ6lXecMducCQW+4NF/XmUTTfWwBXGowq9gbwvv89c2AdXAYgaM83HaTnS3dqLEGaJ6X8LdbSv5veVxsjsZAib1RkEsE2pRjo1vNwJVkHnbXmR9Wn0oKb3g3LHp8zFzlR47HzHkS+rLGZU3grcpfWkWqVEnX8ENiq2W+S7YqYxS1/JCqpA9Ci4nIjIZnwdODcc4o36DSNa40ABY+Bbi9WFf7O32dUe8HfjKC+z1C7Py4PN60EIvKK3UGdBcvJ6e3OAkcQbs/ZJChxc61nv9BLbSAuFAL+QH1vOZ/TzKRTDMs6UYHZYC1A6FX2qUY8oCp/j2EvvAzGJ+eY/hpT/mgqEPHJ6dCMoGzKg7ODszcuP8DcuNs1EWzoTXuAKSI/aZ1K9EQwmMYqdwsmd0oiThKXY9D0k12XVZ49QDoUndW9tsMzrM761RKH6bYzJGPTO/0moKVjGk3scyNdvK6J18Vd2JjgC4ROxY51h17dwCAAxAOxlKZgx8uazYVRRZ/yDcQ75SRqB3u/auLT5B3jYjOvCy01f3IaGqzDijR+m6aeL5soBXkJaTHbIwbrzmHa0xn11jajaGVKNBDq9NvpUoCQXhCNJ2rl23z7PmSFljpMOSqQPI/5d5eg2LxOyB/I0VXN5qDnJiFvfl7khENFsGO6uKsprWF6dIQo2AwI+QNL2Y9tS6fItLR7x4f4yMbX34HXOdS0k6PDVVcIk3aVyfntFYNuiiJLyP1/3NisdwvIjwALACUIPyPFDSjO6IKCs70ZgWcZEu1/+Mu4kYp5tWIGMQIzyHR7MymnD1YvErq9DfU/0p8YqiCSDqQS540bDhhL3Pj7TT7B+XIF6mAY7d5Gj35WkIsoFyxmhSXT5hGvfiaiHV7Ql5g04nBAAQaxWZtZpluuXuQBsAt/vYTj5GOABpAOpjh7vPYPvR5+6QFWRCOSU8gOMJo6QynojBAcyAUSZuj3b7Vf3Me765qUx9wPV1dvwAA" alt="Biryani">
-">
-      <h3>Fried Rice</h3>
-        <p>Rs 400</p>
+<!-- HERO -->
+<div class="hero">
+    <img src="https://tse3.mm.bing.net/th/id/OIP.7FbzcQok1neSoNj1Tat93wHaHa?rs=1&pid=ImgDetMain">
+    <h1>Kababish Biryani</h1>
+    <p>
+        📞 0307-0676579 <br>
+        📍 CMH Chowk, Bahawalpur <br>
+        🕒 11:00 AM – 10:00 PM
+    </p>
+</div>
+
+<!-- MENU -->
+<h2>Our Menu</h2>
+
+<div class="menu">
+
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0">
+        <h3>Chicken Biryani</h3>
+        <p class="price">Rs 350</p>
+        <button onclick="addToCart('Chicken Biryani')">Add to Order</button>
+    </div>
+
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1628294896516-344152572ee1">
+        <h3>Fried Rice</h3>
+        <p class="price">Rs 400</p>
         <button onclick="addToCart('Fried Rice')">Add to Order</button>
     </div>
 
-    <div class="item">
-        <img src="data:image/webp;base64,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">
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1605475128023-21c1b1c2f2c4">
         <h3>Seekh Kabab Roll</h3>
-        <p>Rs 250</p>
+        <p class="price">Rs 250</p>
         <button onclick="addToCart('Seekh Kabab Roll')">Add to Order</button>
     </div>
 
 </div>
 
+<!-- ORDER -->
+<div class="order-box">
+    <h2>Order on WhatsApp</h2>
 
+    <input type="text" id="name" placeholder="Your Name">
+    <input type="text" id="item" placeholder="Food Item">
+    <input type="number" id="qty" placeholder="Quantity">
+    <textarea id="address" placeholder="Your Address"></textarea>
+
+    <button onclick="sendOrder()">Send Order</button>
+</div>
 
 <script>
 let cart = [];
 
 function addToCart(item) {
     cart.push(item);
-    localStorage.setItem("menuCart", JSON.stringify(cart));
-    alert(item + " added to cart!");
+    alert(item + " added!");
 }
 
-function goToOrder() {
-    window.location.href = "order.html";
-}
-</script>
-
-
-
-    .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-        gap: 16px;
-    }
-    .card {
-        border: 1px solid #ddd;
-        border-radius: 10px;
-        padding: 12px;
-        text-align: center;
-        background: orange;
-    }
-    .price {
-        font-weight: bold;
-        margin: 6px 0;
-        color: black;
-    }
-    .card button {
-        cursor: pointer;
-        padding: 8px 12px;
-        border: none;
-        border-radius: 6px;
-        background: black;
-        color: orange;
-    }
-    .card button:hover { background: #222; }
-
-    /* CART */
-  <button onclick="window.location.href='checkout.html'">Checkout</button>
-
-    #cart table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 15px;
-        background: #fff3cc;
-    }
-    #cart th, #cart td {
-        padding: 10px;
-        border-bottom: 1px solid #444;
-        text-align: left;
-    }
-    #cart-actions { margin-top: 12px; display: flex; gap: 8px; }
-    .qty { width: 60px; }
-    .empty { color: orange; font-weight: bold; }
-</style>
-
-
-
-
-
-
-
-<body>
-
-
-
-
-<!-- HERO SECTION -->
-<header class="hero">
-    <img src="https://tse3.mm.bing.net/th/id/OIP.7FbzcQok1neSoNj1Tat93wHaHa?rs=1&pid=ImgDetMain">
-    <h1>Welcome to Kababish Biryani</h1>
-
-    <p>
-        Contact: 0307-0676579<br>
-        Address: Shop #10, Ehsan Commercial Center, CMH Chowk, Bahawalpur<br>
-        Timing: 11:00 AM – 10:00 PM<br>
-        Delicious Meals • Fresh Ingredients
-    </p>
-
-    <a href="#menu" class="btn">Explore Menu</a>
-</header>
-
-        bkAN9r1SEAfp0zfAjeAVY04Agnqb2vjSVyqs2GCgN0gedwMhHdf+5TzD59C66cYr2DA2wg30H+8kgzWHBmZitJqpa609cs71wHO3cOOdNja/XtZG9//o/7c1i8/L3+S80Iwl/o2Gh4WYAfcDssW/4fG4LD8CfeSX/yaZzqfiBMEiR5XJO7cpoNrl5vVxM+yP0b7u7kExdMEJWbhxasy3tDhWpJz+8KWFq5Ifx+cOjbg31LPrxCjyn9Y6agVcEogAEuG7oXOBcpyMAAD+uh4djtK4jg+uvmaOEpRY/5e57Xq6dhX+Nk3kRHx5242cNST85W67k3nRuYCHVDmBeTGlwyxLLe/b5Ryb28P5ADSwkhkHalXj5GBBADg/nxMbCulfZrnIXtOOAsEOUYaSpgQEsBKtvFYr5db78+nZGDiXDepoyqvr7jH3LicX9zvNdnQVHmjA2QcObTlAeXDjSATATXkFMQXL0UOOgE59idsRaRGkmYrFJQ4EeQ81wc2icVVYUZaeiLVyAvJKFnNhiHSnJr+2WPuvzw78U88uLMq9oofJip57xwjA0G3RqsQFBGgKZeKNTwXBbtcuFa612rsrtdaXMdPu8hMNGQNXcUNWF3+wg3CL+TcxJXPNhSvFHpxpK8KqQz3CaWyJUWWCB0aNC8nllKPeVS0CQ/f6xzrOx8GY5ZSgfQFk+viO10VWYOLgU454PClk8JveHETm5a3JOOQr05qSGnCIVdNBnkzkIEP0rQdKr036BKp2q3I0iQU3IBMUqmBq1LK/svVWzIslXdCmt5MLWLU4J4c44e07rjGeOmPhCPpcYgsZvi4rjU/JjQTazQ7Ael0TBzcz3Q6j758l60draDhgYjUIqVas8FnB2x8y9X3iMY1dmA8ygdJ50exXGlrVrWq6MqyFW1vpWlzuVHQMLj/mC2uAxhVHdu64/y14MrvZD1dinQSY2QVpNrTnYKWlsorDra3h4dbXG4S5OIKnlFhAbJiwOPVIijEbtmU1aOYgJxaJHu3Dog5F5O+Dt8NTL4fk6M80vlWEk0CoPspmJR6s3MErP1LAnX/topF7N3gWkVIYKC7SLYqC1b41bF6/7VQuV/RxeajdrWBgfMjfjvUzVj1kUAcwV28+aj1HWlyyUdl154Av6zMzNH4/SXYOahZb80sT+iy+RP5e420v52sph3riwL7LNgxbp2JJf7oGACElJlK43RcBiA4PfRrcISirqzJrQmVq8NDoYHUXrZmCV7tXTXCBD9OODAcyJWwDQsIRWrCjY5qN5yg4odBwFh+tJ5xYh5C0TCcHxchI/fjtvqctuyC+RZhYSeCAEbVw9QhGxRz9MsTlBllF5JHyFfn0PkG27I7P/9F76M9sSZdbc15zx163xJZlqX0z6OTderForm">
-    <input type="text" id="name" placeholder="Your Name" required>
-    <input type="text" id="item" placeholder="Food Item" required>
-    <input type="number" id="qty" placeholder="Quantity" required>
-    <textarea id="address" placeholder="Your Address" required></textarea>
-    <button type="button" onclick="sendOrder()">Send Order</button>
-  </form>
-</div>
-
-<script>
 function sendOrder() {
-  let name = document.getElementById("name").value;
-  let item = document.getElementById("item").value;
-  let qty = document.getElementById("qty").value;
-  let address = document.getElementById("address").value;
+    let name = document.getElementById("name").value;
+    let item = document.getElementById("item").value;
+    let qty = document.getElementById("qty").value;
+    let address = document.getElementById("address").value;
 
-  let message =
-    `*New Order*%0A` +
-    `Name: ${name}%0A` +
-    `Item: ${item}%0A` +
-    `Quantity: ${qty}%0A` +
-    `Address: ${address}`;
+    let msg =
+        `New Order%0A` +
+        `Name: ${name}%0A` +
+        `Item: ${item}%0A` +
+        `Qty: ${qty}%0A` +
+        `Address: ${address}`;
 
-  let phone = "923001234567"; // ← CHANGE THIS TO YOUR NUMBER (without +)
+    let phone = "923070676579"; // your number
 
-  window.open(`https://wa.me/${phone}?text=${message}`, "_blank");
+    window.open(`https://wa.me/${phone}?text=${msg}`, "_blank");
 }
 </script>
 
-
-</body>
-</html>
-
-   
-
-
+  
