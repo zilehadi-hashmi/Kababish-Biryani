@@ -1,4 +1,4 @@
-c<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -49,6 +49,39 @@ body {
 h1, h2, h3 {
     color: orange;
     text-align: center;
+}/* SLIDER */
+.slider {
+    width: 100%;
+    height: 260px;
+    overflow: hidden;
+    border-radius: 20px;
+    margin: 40px 0;
+    border: 3px solid orange;
+    box-shadow: 0 0 15px rgba(255,165,0,0.5);
+}
+
+.slides {
+    display: flex;
+    width: 400%;
+    animation: slide 12s infinite;
+}
+
+.slides img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+}
+
+/* Animation */
+@keyframes slide {
+    0%   { transform: translateX(0); }
+    25%  { transform: translateX(0); }
+    30%  { transform: translateX(-100%); }
+    50%  { transform: translateX(-100%); }
+    55%  { transform: translateX(-200%); }
+    75%  { transform: translateX(-200%); }
+    80%  { transform: translateX(-300%); }
+    100% { transform: translateX(-300%); }
 }
 <!-- FOOD SLIDER -->
 <div class="slider">
@@ -59,36 +92,94 @@ h1, h2, h3 {
         <img src="https://images.unsplash.com/photo-1604908177522-402f03fb6f6d" alt="Fried Rice">
     </div>
 </div>
-/* MENU */
-.menu {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 20px;
-    margin-top: 20px;
-}
+<!-- ================= MENU SECTIONS ================= -->
 
-.card {
-    background: #111;
-    padding: 15px;
-    border-radius: 15px;
-    text-align: center;
-    border: 2px solid orange;
-    box-shadow: 0 0 10px rgba(255,165,0,0.3);
-}
+<h2> Biryani</h2>
+<div class="menu">
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0">
+        <h3>Chicken Biryani</h3>
+        <p class="price">Rs 350</p>
+        <button onclick="addToCart('Chicken Biryani - Rs 350')">Add to Cart</button>
+    </div>
 
-.card img {
-    width: 100%;
-    height: 160px;
-    object-fit: cover;
-    border-radius: 10px;
-    border: 2px solid orange;
-}
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1631515242808-497c3fbd3972">
+        <h3>Beef Biryani</h3>
+        <p class="price">Rs 450</p>
+        <button onclick="addToCart('Beef Biryani - Rs 450')">Add to Cart</button>
+    </div>
+</div>
 
-.price {
-    font-weight: bold;
-    color: orange;
-}
+<h2> Chinese</h2>
+<div class="menu">
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1600628422019-41b5a58c96b9">
+        <h3>Chicken Fried Rice</h3>
+        <p class="price">Rs 400</p>
+        <button onclick="addToCart('Chicken Fried Rice - Rs 400')">Add to Cart</button>
+    </div>
 
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1628294896516-344152572e95">
+        <h3>Chicken Chowmein</h3>
+        <p class="price">Rs 420</p>
+        <button onclick="addToCart('Chicken Chowmein - Rs 420')">Add to Cart</button>
+    </div>
+</div>
+
+<h2> Drinks</h2>
+<div class="menu">
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e">
+        <h3>Cold Drink</h3>
+        <p class="price">Rs 80</p>
+        <button onclick="addToCart('Cold Drink - Rs 80')">Add to Cart</button>
+    </div>
+
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87">
+        <h3>Mineral Water</h3>
+        <p class="price">Rs 50</p>
+        <button onclick="addToCart('Mineral Water - Rs 50')">Add to Cart</button>
+    </div>
+</div>
+
+<h2> Deals</h2>
+<div class="menu">
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1604908177522-402f03fb6f6d">
+        <h3>Deal 1</h3>
+        <p>2 Chicken Biryani + Drink</p>
+        <p class="price">Rs 650</p>
+        <button onclick="addToCart('Deal 1 - Rs 650')">Add to Cart</button>
+    </div>
+
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1600628422019-41b5a58c96b9">
+        <h3>Deal 2</h3>
+        <p>Biryani + Fried Rice</p>
+        <p class="price">Rs 700</p>
+        <button onclick="addToCart('Deal 2 - Rs 700')">Add to Cart</button>
+    </div>
+</div>
+
+<h2> Sides</h2>
+<div class="menu">
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe">
+        <h3>Raita</h3>
+        <p class="price">Rs 50</p>
+        <button onclick="addToCart('Raita - Rs 50')">Add to Cart</button>
+    </div>
+
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1604908554025-4e70e21e0f4f">
+        <h3>Salad</h3>
+        <p class="price">Rs 40</p>
+        <button onclick="addToCart('Salad - Rs 40')">Add to Cart</button>
+    </div>
+</div>
 /* BUTTONS */
 button {
     background: orange;
