@@ -188,6 +188,19 @@ function sendOrder() {
 
     window.open(`https://wa.me/${phone}?text=${msg}`, "_blank");
 }
+    
+let cart = JSON.parse(localStorage.getItem("menuCart")) || [];
+
+function addToCart(item) {
+    cart.push(item);
+    localStorage.setItem("menuCart", JSON.stringify(cart));
+    alert(item + " added to cart!");
+}
+
+function goToCart() {
+    window.location.href = "order.html";
+}
+</script>
 </script>
 
   
