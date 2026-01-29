@@ -109,63 +109,68 @@ button:hover {
     border: 2px solid orange;
 }
 
-/* CART */
-.cart-box {
-    background: #111;
-    padding: 20px;
-    border-radius: 15px;
-    border: 2px solid orange;
-}
-</style>
-</head>
+/* CART */<h2>Order Details</h2>
 
-<body>
-
-<div class="hero">
-    <h1>Kababish Biryani</h1>
-    <p>Fresh • Hot • Delicious</p>
-</div>
-
-<!-- FOOD SLIDER -->
-<div class="slider">
-    <div class="slides">
-        <img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0">
-        <img src="https://images.unsplash.com/photo-1600628422019-41b5a58c96b9">
-        <img src="https://images.unsplash.com/photo-1628294896516-344152572e95">
-        <img src="https://images.unsplash.com/photo-1604908177522-402f03fb6f6d">
-    </div>
-</div>
-
-<h2>Biryani</h2>
-<div class="menu">
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0">
-        <h3>Chicken Biryani</h3>
-        <p class="price">Rs 350</p>
-        <button onclick="addToCart('Chicken Biryani - Rs 350')">Add to Cart</button>
-    </div>
-
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1631515242808-497c3fbd3972">
-        <h3>Beef Biryani</h3>
-        <p class="price">Rs 450</p>
-        <button onclick="addToCart('Beef Biryani - Rs 450')">Add to Cart</button>
-    </div>
-</div>
-
-<h2>Cart</h2>
 <div class="cart-box">
     <ul id="cart"></ul>
+
+    <h3>Total: Rs <span id="total">0</span></h3>
+
+    <input type="text" id="name" placeholder="Your Name" style="width:100%;padding:8px;margin:5px 0;">
+    <input type="text" id="address" placeholder="Delivery Address" style="width:100%;padding:8px;margin:5px 0;">
+
+    <button onclick="placeOrder()">Place Order</button> <button onclick="goCheckout()">Checkout</button>
 </div>
 
-<script>
-function addToCart(item) {
+<script><script>
+let cart = [];
+let total = 0;
+
+function addToCart(item, price) {
+    cart.push({ item, price });
+    total += price;
+
     const li = document.createElement("li");
-    li.textContent = item;
+    li.textContent = item + " - Rs " + price;
     document.getElementById("cart").appendChild(li);
+
+    document.getElementById("total").innerText = total;
+}
+
+function goCheckout() {
+    localStorage.setItem("cart", JSON.stringify(cart));
+    localStorage.setItem("total", total);
+    window.location.href = "checkout.html";
 }
 </script>
+let total = 0;
 
+function addToCart(item, price) {
+    const li = document.createElement("li");
+    li.textContent = item + " - Rs " + price;
+    document.getElementById("cart").appendChild(li);
+
+    total += price;
+    document.getElementById("total").innerText = total;
+}
+
+function placeOrder() {
+    const name = document.getElementById("name").value;
+    const address = document.getElementById("address").value;
+
+    if (name === "" || address === "") {
+        alert("Please enter name and address");
+        return;
+    }
+
+    alert(
+        "Order Placed Successfully!\n\n" +
+        "Name: " + name + "\n" +
+        "Address: " + address + "\n" +
+        "Total: Rs " + total
+    );
+}
+</script>
 </body>
 </html>
          
