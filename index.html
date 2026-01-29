@@ -164,30 +164,7 @@ h2 {
 </div>
 
 <script>
-let cart = [];
 
-function addToCart(item) {
-    cart.push(item);
-    alert(item + " added!");
-}
-
-function sendOrder() {
-    let name = document.getElementById("name").value;
-    let item = document.getElementById("item").value;
-    let qty = document.getElementById("qty").value;
-    let address = document.getElementById("address").value;
-
-    let msg =
-        `New Order%0A` +
-        `Name: ${name}%0A` +
-        `Item: ${item}%0A` +
-        `Qty: ${qty}%0A` +
-        `Address: ${address}`;
-
-    let phone = "923070676579"; // your number
-
-    window.open(`https://wa.me/${phone}?text=${msg}`, "_blank");
-}
     
 let cart = JSON.parse(localStorage.getItem("menuCart")) || [];
 
