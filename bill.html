@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Order Bill</title>
+<style>
+body {
+    background: black;
+    color: orange;
+    font-family: Arial;
+    max-width: 700px;
+    margin: auto;
+    padding: 20px;
+}
+.bill {
+    border: 2px solid orange;
+    padding: 20px;
+    border-radius: 15px;
+}
+</style>
+</head>
+
+<body>
+
+<h2>Order Bill</h2>
+
+<div class="bill">
+    <p><b>Name:</b> <span id="n"></span></p>
+    <p><b>Phone:</b> <span id="p"></span></p>
+    <p><b>Address:</b> <span id="a"></span></p>
+
+    <hr>
+
+    <ul id="items"></ul>
+
+    <h3>Total: Rs <span id="t"></span></h3>
+
+    <p>Thank you for ordering from Kababish Biryani ❤️</p>
+</div>
+
+<script>
+const cart = JSON.parse(localStorage.getItem("cart"));
+const total = localStorage.getItem("total");
+
+document.getElementById("n").innerText = localStorage.getItem("name");
+document.getElementById("p").innerText = localStorage.getItem("phone");
+document.getElementById("a").innerText = localStorage.getItem("address");
+document.getElementById("t").innerText = total;
+
+cart.forEach(i => {
+    const li = document.createElement("li");
+    li.textContent = i.item + " - Rs " + i.price;
+    document.getElementById("items").appendChild(li);
+});
+</script>
+
+</body>
+</html>
