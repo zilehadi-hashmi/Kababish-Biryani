@@ -4,11 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kababish Biryani</title>
-
 <link rel="icon" href="android-chrome-192x192.png">
 
 <style>
-<body> {
+body {
     font-family: Arial, sans-serif;
     padding: 15px;
     max-width: 1000px;
@@ -17,22 +16,19 @@
     color: orange;
 }
 
-<!-- HERO -->
-<div class="hero">
-    <img src="https://tse3.mm.bing.net/th/id/OIP.7FbzcQok1neSoNj1Tat93wHaHa?rs=1&pid=ImgDetMain">
-    <h1>Kababish Biryani</h1>
-    <p>
-        📞 0307-0676579 <br>
-        📍 CMH Chowk, Bahawalpur <br>
-        🕒 11:00 AM – 10:00 PM
-    </p>
-
+/* HERO */
 .hero {
     background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
     url("https://images.unsplash.com/photo-1604908177522-402f03fb6f6d") center/cover;
     padding: 80px 30px;
     border-radius: 20px;
     text-align: center;
+    border: 3px solid orange;
+}
+
+.hero img {
+    width: 200px;
+    border-radius: 15px;
     border: 3px solid orange;
 }
 
@@ -109,8 +105,26 @@ button:hover {
     border: 2px solid orange;
 }
 
-/* CART */<h2>Order Details</h2>
+/* CART */
+.cart-box {
+    margin-top: 20px;
+}
+</style>
+</head>
 
+<body>
+
+<div class="hero">
+    <img src="https://tse3.mm.bing.net/th/id/OIP.7FbzcQok1neSoNj1Tat93wHaHa?rs=1&pid=ImgDetMain">
+    <h1>Kababish Biryani</h1>
+    <p>
+        📞 0307-0676579 <br>
+        📍 CMH Chowk, Bahawalpur <br>
+        🕒 11:00 AM – 10:00 PM
+    </p>
+</div>
+
+<h2>Order Details</h2>
 <div class="cart-box">
     <ul id="cart"></ul>
 
@@ -119,10 +133,11 @@ button:hover {
     <input type="text" id="name" placeholder="Your Name" style="width:100%;padding:8px;margin:5px 0;">
     <input type="text" id="address" placeholder="Delivery Address" style="width:100%;padding:8px;margin:5px 0;">
 
-    <button onclick="placeOrder()">Place Order</button> <button onclick="goCheckout()">Checkout</button>
+    <button onclick="placeOrder()">Place Order</button>
+    <button onclick="goCheckout()">Checkout</button>
 </div>
 
-<script><script>
+<script>
 let cart = [];
 let total = 0;
 
@@ -134,23 +149,6 @@ function addToCart(item, price) {
     li.textContent = item + " - Rs " + price;
     document.getElementById("cart").appendChild(li);
 
-    document.getElementById("total").innerText = total;
-}
-
-function goCheckout() {
-    localStorage.setItem("cart", JSON.stringify(cart));
-    localStorage.setItem("total", total);
-    window.location.href = "checkout.html";
-}
-</script>
-let total = 0;
-
-function addToCart(item, price) {
-    const li = document.createElement("li");
-    li.textContent = item + " - Rs " + price;
-    document.getElementById("cart").appendChild(li);
-
-    total += price;
     document.getElementById("total").innerText = total;
 }
 
@@ -170,7 +168,13 @@ function placeOrder() {
         "Total: Rs " + total
     );
 }
+
+function goCheckout() {
+    localStorage.setItem("cart", JSON.stringify(cart));
+    localStorage.setItem("total", total);
+    window.location.href = "checkout.html";
+}
 </script>
+
 </body>
-</html>
-         
+</    
