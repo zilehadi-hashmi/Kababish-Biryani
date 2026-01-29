@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout - Kababish Biryani</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: black;
+    color: orange;
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.box {
+    background: #111;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 20px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 6px;
+    border: none;
+}
+
+textarea {
+    height: 80px;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    background: orange;
+    color: black;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #ffb347;
+}
+
+.order-summary {
+    margin-top: 15px;
+    background: black;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid orange;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🧾 Checkout</h1>
+
+<div class="box">
+    <h3>Customer Details</h3>
+
+    <input type="text" id="name" placeholder="Full Name" required>
+    <input type="text" id="phone" placeholder="Phone Number" required>
+    <textarea id="address" placeholder="Delivery Address" required></textarea>
+</div>
+
+<div class="box">
+    <h3>Order Summary</h3>
+    <div class="order-summary" id="summary"></div>
+</div>
+
+<button onclick="placeOrder()">Place Order on WhatsApp</button>
+
+<script>
+let prices = {
+    "Chicken Biryani": 350,
+    "Fried Rice": 400,
+    "Seekh Kabab Roll": 250
+};
+
+let cart = JSON.parse(localStorage.getItem("menuCart")) || [];
+let summaryDiv = document.getElementById("summary");
+
+let total = 0;
+
+cart.forEach(item => {
+    let price = prices[item];
+    summaryDiv.innerHTML += `${item} — Rs ${price}<br>`;
+    total += price;
+});
+
+summaryDiv.innerHTML += `<hr>Total: Rs ${total}`;
+
+function placeOrder() {
+    let name = document.getElementById("name").value;
+    let phone = document.getElementById("phone").value;
+    let address = document.getElementById("address").value;
+
+    if (!name || !phone || !address) {
+        alert("Please fill all details");
+        return;
+    }
+
+    let message =
+        `NEW ORDER%0A` +
+        `Name: ${name}%0A` +
+        `Phone: ${phone}%0A` +
+        `Address: ${address}%0A%0A` +
+        `Items:%0A`;
+
+    cart.forEach(item => {
+        message += `- ${item}%0A`;
+    });
+
+    message += `%0ATotal: Rs ${total}`;
+
+    let shopNumber = "923070676579"; // change if needed
+
+    window.open(`https://wa.me/${shopNumber}?text=${message}`, "_blank");
+
+    localStorage.removeItem("menuCart");
+}
+</script>
+
+</body>
+</html>
