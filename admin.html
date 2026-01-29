@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Admin Panel</title>
+<style>
+body {
+    background: black;
+    color: orange;
+    font-family: Arial;
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+}
+
+.order {
+    border: 2px solid orange;
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+button {
+    background: orange;
+    color: black;
+    padding: 8px 14px;
+    border: none;
+    font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Admin Order Panel</h1>
+
+<div id="orders"></div>
+
+<button onclick="clearOrders()">Clear All Orders</button>
+
+<script>
+let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+const container = document.getElementById("orders");
+
+if (orders.length === 0) {
+    container.innerHTML = "<p>No orders yet.</p>";
+}
+
+orders.forEach((o, index) => {
+    const div = document.createElement("div");
+    div.className = "order";
+
+    div.innerHTML = `
+        <h3>Order #${index + 1}</h3>
+        <p><b>Name:</b> ${o.name}</p>
+        <p><b>Phone:</b> ${o.phone}</p>
+        <p><b>Address:</b> ${o.address}</p>
+        <p><b>Time:</b> ${o.time}</p>
+        <ul>
+            ${o.items.map(i => `<li>${i.item} - Rs ${i.price}</li>`).join("")}
+        </ul>
+        <h4>Total: Rs ${o.total}</h4>
+    `;
+
+    container.appendChild(div);
+});
+
+function clearOrders() {
+    if (confirm("Delete all orders?")) {
+        localStorage.removeItem("orders");
+        location.reload();
+    }
+}
+</script>
+
+</body>
+</html>
