@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Admin Login</title>
+
+<style>
+body{
+    background:black;
+    color:orange;
+    font-family:Arial;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+.box{
+    background:#111;
+    padding:30px;
+    border-radius:10px;
+    width:300px;
+}
+input,button{
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+}
+button{
+    background:orange;
+    color:black;
+    border:none;
+    font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+<h2>🔐 Admin Login</h2>
+
+<input id="user" placeholder="Username">
+<input id="pass" type="password" placeholder="Password">
+
+<button onclick="login()">Login</button>
+</div>
+
+<script>
+function login(){
+    let u = document.getElementById("user").value;
+    let p = document.getElementById("pass").value;
+
+    if(u === "admin" && p === "1234"){
+        window.location.href = "dashboard.html";
+    } else {
+        alert("Wrong login");
+    }
+}
+</script>
+
+</body>
+</html>
