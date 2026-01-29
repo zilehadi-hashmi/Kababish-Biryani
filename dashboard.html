@@ -40,19 +40,31 @@ th{
 </table>
 
 <script>
-let orders = JSON.parse(localStorage.getItem("orders")) || [];
-let table = document.getElementById("orders");
+let cart = JSON.parse(localStorage.getItem("menuCart")) || [];
 
-orders.forEach(o=>{
-    let row = table.insertRow();
-    row.innerHTML = `
-        <td>${o.name}</td>
-        <td>${o.phone}</td>
-        <td>${o.address}</td>
-        <td>${o.items.join(", ")}</td>
-    `;
-});
+function sendOrder(){
+
+    let name = document.getElementById("name").value;
+    let phone = document.getElementById("phone").value;
+    let address = document.getElementById("address").value;
+
+    let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+    orders.push({
+        name:name,
+        phone:phone,
+        address:address,
+        items:cart
+    });
+
+    localStorage.setItem("orders", JSON.stringify(orders));
+
+    alert("Order sent to admin dashboard!");
+
+    localStorage.removeItem("menuCart");
+}
 </script>
+
 
 </body>
 </html>
