@@ -1,46 +1,58 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Orders Dashboard</title>
+<title>Admin Dashboard</title>
+
 <style>
-    body { font-family: Arial; background: orange; padding: 20px; }
-    .order {
-        background: white; padding: 15px; margin-bottom: 15px;
-        border-radius: 10px; border-left: 6px solid black;
-    }
+body{
+    background:black;
+    color:orange;
+    font-family:Arial;
+    padding:20px;
+}
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:#111;
+}
+th,td{
+    border:1px solid orange;
+    padding:10px;
+}
+th{
+    background:orange;
+    color:black;
+}
 </style>
 </head>
 
 <body>
 
-<h2>All Orders 📦</h2>
-<div id="orders"></div>
+<h1>📊 Admin Dashboard</h1>
+
+<table id="orders">
+<tr>
+<th>Name</th>
+<th>Phone</th>
+<th>Address</th>
+<th>Items</th>
+</tr>
+</table>
 
 <script>
-function loadOrders() {
-    let orders = JSON.parse(localStorage.getItem("orders")) || [];
-    let container = document.getElementById("orders");
+let orders = JSON.parse(localStorage.getItem("orders")) || [];
+let table = document.getElementById("orders");
 
-    container.innerHTML = "";
-
-    orders.forEach((order, index) => {
-        container.innerHTML += `
-            <div class="order">
-                <h3>Order #${index + 1}</h3>
-                <p><b>Name:</b> ${order.name}</p>
-                <p><b>Food:</b> ${order.food}</p>
-                <p><b>Qty:</b> ${order.qty}</p>
-                <p><b>Address:</b> ${order.address}</p>
-                <p><b>Time:</b> ${order.time}</p>
-            </div>
-        `;
-    });
-}
-
-loadOrders();
+orders.forEach(o=>{
+    let row = table.insertRow();
+    row.innerHTML = `
+        <td>${o.name}</td>
+        <td>${o.phone}</td>
+        <td>${o.address}</td>
+        <td>${o.items.join(", ")}</td>
+    `;
+});
 </script>
 
 </body>
 </html>
-
- 
