@@ -1,69 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Your Cart - Kababish Biryani</title>
+<title>Cart - Kababish Biryani</title>
 
 <style>
 body {
-    font-family: Arial, sans-serif;
-    background: #000;
-    color: orange;
-    max-width: 900px;
-    margin: auto;
-    padding: 20px;
+    background:black;
+    color:orange;
+    font-family:Arial;
+    max-width:900px;
+    margin:auto;
+    padding:20px;
 }
-
-h1 {
-    text-align: center;
-}
-
 table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    background: #111;
+    width:100%;
+    background:#111;
+    border-collapse:collapse;
 }
-
-th, td {
-    padding: 12px;
-    border-bottom: 1px solid orange;
-    text-align: center;
+th,td {
+    padding:12px;
+    border-bottom:1px solid orange;
+    text-align:center;
 }
-
 th {
-    background: orange;
-    color: black;
+    background:orange;
+    color:black;
 }
-
 button {
-    background: orange;
-    color: black;
-    border: none;
-    padding: 6px 12px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-weight: bold;
+    background:orange;
+    color:black;
+    padding:8px 15px;
+    border:none;
+    border-radius:5px;
 }
-
-button:hover {
-    background: #ffb347;
-}
-
-.total {
-    font-size: 22px;
-    text-align: right;
-    margin-top: 20px;
-}
-
 .checkout {
-    width: 100%;
-    padding: 15px;
-    background: orange;
-    color: black;
-    font-size: 18px;
-    margin-top: 20px;
+    width:100%;
+    padding:15px;
+    font-size:18px;
+    margin-top:20px;
 }
 </style>
 </head>
@@ -72,16 +46,7 @@ button:hover {
 
 <h1>🛒 Your Cart</h1>
 
-<table id="cartTable">
-    <tr>
-        <th>Item</th>
-        <th>Qty</th>
-        <th>Price</th>
-        <th>Remove</th>
-    </tr>
-</table>
-
-<div class="total" id="totalPrice">Total: Rs 0</div>
+<table id="cart"></table>
 
 <button class="checkout" onclick="goCheckout()">Proceed to Checkout</button>
 
@@ -93,38 +58,23 @@ let prices = {
 };
 
 let cart = JSON.parse(localStorage.getItem("menuCart")) || [];
-
-let table = document.getElementById("cartTable");
+let table = document.getElementById("cart");
 let total = 0;
 
+table.innerHTML = "<tr><th>Item</th><th>Price</th></tr>";
+
 cart.forEach(item => {
-    let row = table.insertRow();
     let price = prices[item];
-
-    row.innerHTML = `
-        <td>${item}</td>
-        <td>1</td>
-        <td>Rs ${price}</td>
-        <td><button onclick="removeItem(this, ${price})">X</button></td>
-    `;
-
     total += price;
+    table.innerHTML += `<tr><td>${item}</td><td>Rs ${price}</td></tr>`;
 });
 
-document.getElementById("totalPrice").innerText = "Total: Rs " + total;
+table.innerHTML += `<tr><th>Total</th><th>Rs ${total}</th></tr>`;
 
-function removeItem(btn, price) {
-    let row = btn.parentElement.parentElement;
-    row.remove();
-    total -= price;
-    document.getElementById("totalPrice").innerText = "Total: Rs " + total;
-}
-
-function goCheckout() {
+function goCheckout(){
     window.location.href = "checkout.html";
 }
 </script>
 
 </body>
 </html>
-
