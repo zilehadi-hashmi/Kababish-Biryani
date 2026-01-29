@@ -51,6 +51,33 @@ cart.forEach(i => {
     li.textContent = i.item + " - Rs " + i.price;
     document.getElementById("items").appendChild(li);
 });
+
+const cart = JSON.parse(localStorage.getItem("cart"));
+const total = localStorage.getItem("total");
+
+const order = {
+    name: localStorage.getItem("name"),
+    phone: localStorage.getItem("phone"),
+    address: localStorage.getItem("address"),
+    items: cart,
+    total: total,
+    time: new Date().toLocaleString()
+};
+
+let orders = JSON.parse(localStorage.getItem("orders")) || [];
+orders.push(order);
+localStorage.setItem("orders", JSON.stringify(orders));
+
+document.getElementById("n").innerText = order.name;
+document.getElementById("p").innerText = order.phone;
+document.getElementById("a").innerText = order.address;
+document.getElementById("t").innerText = order.total;
+
+order.items.forEach(i => {
+    const li = document.createElement("li");
+    li.textContent = i.item + " - Rs " + i.price;
+    document.getElementById("items").appendChild(li);
+});
 </script>
 
 </body>
