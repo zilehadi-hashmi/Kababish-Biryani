@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -6,7 +6,7 @@
 <title>Kababish Biryani</title>
 <link rel="icon" href="android-chrome-192x192.png">
 
-<style><head\>
+<style>
 body {
     font-family: Arial, sans-serif;
     padding: 15px;
@@ -19,7 +19,7 @@ body {
 /* HERO */
 .hero {
     background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
-    url("https://images.unsplash.com/photo-1604908177522-402f03fb6f6d") center/cover;
+    url("https://images.unsplash.com/photo-1604908177522-402f03fb6f6d?auto=format&fit=crop&w=1000&q=80") center/cover;
     padding: 80px 30px;
     border-radius: 20px;
     text-align: center;
@@ -61,7 +61,14 @@ body {
     80%,100% { transform: translateX(-300%); }
 }
 
-/* MENU */
+/* MENU SECTIONS */
+.section-title {
+    font-size: 1.8em;
+    margin-top: 40px;
+    text-align: center;
+    text-decoration: underline;
+}
+
 .menu {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -86,6 +93,7 @@ body {
 
 .price {
     font-weight: bold;
+    margin: 10px 0;
 }
 
 /* BUTTON */
@@ -109,13 +117,28 @@ button:hover {
 .cart-box {
     margin-top: 20px;
 }
+
+#total {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+input {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid orange;
+    margin-bottom: 10px;
+    width: 100%;
+    background: #222;
+    color: orange;
+}
 </style>
-
-
+</head>
 <body>
 
+<!-- HERO -->
 <div class="hero">
-    <img src="https://tse3.mm.bing.net/th/id/OIP.7FbzcQok1neSoNj1Tat93wHaHa?rs=1&pid=ImgDetMain">
+    <img src="https://images.unsplash.com/photo-1604908177522-402f03fb6f6d?auto=format&fit=crop&w=500&q=80" alt="Kababish Biryani">
     <h1>Kababish Biryani</h1>
     <p>
         📞 0307-0676579 <br>
@@ -124,11 +147,82 @@ button:hover {
     </p>
 </div>
 
-<h2>Order Details</h2>
+<!-- SLIDER -->
+<div class="slider">
+    <div class="slides">
+        <img src="https://images.unsplash.com/photo-1604908177522-402f03fb6f6d?auto=format&fit=crop&w=1200&q=90" alt="Biryani HD">
+        <img src="https://images.unsplash.com/photo-1617196032202-7cfe77b7b0b1?auto=format&fit=crop&w=1200&q=90" alt="Fried Rice HD">
+        <img src="https://images.unsplash.com/photo-1603078672960-4a062f6c28aa?auto=format&fit=crop&w=1200&q=90" alt="Chinese HD">
+        <img src="https://images.unsplash.com/photo-1571847149432-bfa317a72d09?auto=format&fit=crop&w=1200&q=90" alt="Drinks HD">
+    </div>
+</div>
+
+<!-- CUSTOMER INFO -->
+<h2>Customer Info</h2>
+<input type="text" id="name" placeholder="Enter your name">
+<input type="text" id="address" placeholder="Enter your address">
+
+<!-- CART -->
+<h2>Cart</h2>
 <div class="cart-box">
     <ul id="cart"></ul>
-<script>
+    <p>Total: Rs <span id="total">0</span></p>
+</div>
+<button onclick="placeOrder()">Place Order</button>
+<button onclick="goCheckout()">Go to Checkout</button>
 
+<!-- Biryani Section -->
+<h2 class="section-title">Biryani Deals</h2>
+<div class="menu" id="biryani">
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1604908177522-402f03fb6f6d?auto=format&fit=crop&w=800&q=90" alt="Chicken Biryani HD">
+        <h3>Chicken Biryani</h3>
+        <p class="price">Rs 450</p>
+        <button onclick="addToCart('Chicken Biryani', 450)">Add to Cart</button>
+    </div>
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1595564989782-dfc22b9f7ad1?auto=format&fit=crop&w=800&q=90" alt="Beef Biryani HD">
+        <h3>Beef Biryani</h3>
+        <p class="price">Rs 500</p>
+        <button onclick="addToCart('Beef Biryani', 500)">Add to Cart</button>
+    </div>
+</div>
+
+<!-- Chinese Section -->
+<h2 class="section-title">Chinese Deals</h2>
+<div class="menu" id="chinese">
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1617196032202-7cfe77b7b0b1?auto=format&fit=crop&w=800&q=90" alt="Fried Rice HD">
+        <h3>Fried Rice</h3>
+        <p class="price">Rs 350</p>
+        <button onclick="addToCart('Fried Rice', 350)">Add to Cart</button>
+    </div>
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1603078672960-4a062f6c28aa?auto=format&fit=crop&w=800&q=90" alt="Noodles HD">
+        <h3>Noodles</h3>
+        <p class="price">Rs 300</p>
+        <button onclick="addToCart('Noodles', 300)">Add to Cart</button>
+    </div>
+</div>
+
+<!-- Drinks Section -->
+<h2 class="section-title">Drinks</h2>
+<div class="menu" id="drinks">
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1571847149432-bfa317a72d09?auto=format&fit=crop&w=800&q=90" alt="Coke HD">
+        <h3>Coke</h3>
+        <p class="price">Rs 100</p>
+        <button onclick="addToCart('Coke', 100)">Add to Cart</button>
+    </div>
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1571847149432-bfa317a72d09?auto=format&fit=crop&w=800&q=90" alt="Orange Juice HD">
+        <h3>Orange Juice</h3>
+        <p class="price">Rs 120</p>
+        <button onclick="addToCart('Orange Juice', 120)">Add to Cart</button>
+    </div>
+</div>
+
+<script>
 let cart = [];
 let total = 0;
 
@@ -168,4 +262,4 @@ function goCheckout() {
 </script>
 
 </body>
-</    
+            </html>
