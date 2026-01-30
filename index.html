@@ -211,50 +211,58 @@ button:hover {
 </div>
 
 <!-- CUSTOMER INFO -->
-<div class="section">
 <h2>Customer Info</h2>
-<input class="input" id="name" placeholder="Your Name">
-<input class="input" id="address" placeholder="Address">
-</div>
+<input type="text" id="name" placeholder="Enter your name">
+<input type="text" id="address" placeholder="Enter your address">
 
 <!-- CART -->
-<div class="section">
 <h2>Cart</h2>
 <div class="cart-box">
     <ul id="cart"></ul>
-    <p><strong>Total: Rs <span id="total">0</span></strong></p>
+    <p>Total: Rs <span id="total">0</span></p>
 </div>
 <button onclick="placeOrder()">Place Order</button>
-</div>
+<button onclick="goCheckout()">Go to Checkout</button>
 
 <script>
 let cart = [];
 let total = 0;
 
 function addToCart(item, price) {
-    cart.push({item, price});
+    cart.push({ item, price });
     total += price;
+
     const li = document.createElement("li");
-    li.textContent = item + " — Rs " + price;
+    li.textContent = item + " - Rs " + price;
     document.getElementById("cart").appendChild(li);
+
     document.getElementById("total").innerText = total;
 }
 
 function placeOrder() {
-    const name = document.getElementById("name").value.trim();
-    const address = document.getElementById("address").value.trim();
+    const name = document.getElementById("name").value;
+    const address = document.getElementById("address").value;
 
-    if(cart.length === 0){
-        alert("Cart is empty!");
-        return;
-    }
-    if(name === "" || address === ""){
-        alert("Enter name and address");
+    if (name === "" || address === "") {
+        alert("Please enter name and address");
         return;
     }
 
-    alert("✅ Order Placed\n\nName: "+name+"\nAddress: "+address+"\nTotal: Rs "+total);
+    alert(
+        "Order Placed Successfully!\n\n" +
+        "Name: " + name + "\n" +
+        "Address: " + address + "\n" +
+        "Total: Rs " + total
+    );
 }
+
+function goCheckout() {
+    localStorage.setItem("cart", JSON.stringify(cart));
+    localStorage.setItem("total", total);
+    window.location.href = "checkout.html";
+}
+    alert("✅ Order Placed\n\nName: "+name+"\nAddress: "+address+"\nTotal: Rs "+total);
 </script>
+
 </body>
-</html>
+            </html>
