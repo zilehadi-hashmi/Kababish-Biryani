@@ -1,251 +1,100 @@
-   <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kababish Biryani</title>
 
+<!-- LOGO -->
+<link rel="icon" href="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxASEBERERAVFhUXFRUVFxYPFRcSFRUYFRYXFhgYFxcYICggGB0lGxYXITEhJSkrLi4uHh8zODMsNygtLisBCgoKDg0OGBAQFSslICUtKy0tNy0rNys3LS0rLS0tLS0rLTcrLy4uLS0vLy03NistKy0tLS0tLS0rKy0tKy0tLf...">
+
 <style>
 body {
-    font-family: Arial;
-    background: #000;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: black;
     color: orange;
-    max-width: 1000px;
-    margin: auto;
     padding: 15px;
 }
 
-/* HERO */
-.hero {
+h1, h2 {
     text-align: center;
-    padding: 50px;
-    border: 3px solid orange;
-    border-radius: 20px;
-    background: linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),
-    url("https://images.unsplash.com/photo-1604908177522-402f03fb6f6d?auto=format&fit=crop&w=1200&q=90") center/cover;
+}
+
+.logo {
+    display: block;
+    margin: auto;
+    width: 120px;
 }
 
 /* SLIDER */
 .slider {
-    position: relative;
-    height: 260px;
+    width: 100%;
     overflow: hidden;
-    border: 3px solid orange;
-    border-radius: 20px;
-    margin: 40px 0;
+    border-radius: 15px;
+    margin: 20px 0;
 }
 
 .slides {
     display: flex;
-    transition: 0.6s;
+    animation: slide 12s infinite;
 }
 
 .slides img {
     width: 100%;
-    height: 260px;
+    height: 250px;
     object-fit: cover;
 }
 
-.arrow {
-    position: absolute;
-    top: 45%;
-    background: orange;
-    color: black;
-    border: none;
-    padding: 10px 15px;
-    font-size: 20px;
-    cursor: pointer;
+@keyframes slide {
+    0% {transform: translateX(0);}
+    33% {transform: translateX(-100%);}
+    66% {transform: translateX(-200%);}
+    100% {transform: translateX(0);}
 }
-
-.left { left: 10px; }
-.right { right: 10px; }
 
 /* MENU */
-.section-title {
-    text-align: center;
-    font-size: 26px;
-    margin-top: 40px;
+.section {
+    margin-top: 30px;
 }
 
-.menu {
+.items {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 15px;
 }
 
 .card {
     background: #111;
-    padding: 15px;
-    border-radius: 15px;
     border: 2px solid orange;
+    border-radius: 12px;
+    padding: 10px;
     text-align: center;
 }
 
 .card img {
     width: 100%;
-    height: 160px;
+    height: 130px;
     object-fit: cover;
     border-radius: 10px;
 }
 
 button {
     background: orange;
+    color: black;
     border: none;
-    padding: 8px 14px;
-    font-weight: bold;
-    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 8px;
     margin-top: 8px;
+    cursor: pointer;
+    font-weight: bold;
 }
 
 button:hover {
-    background: black;
-    color: orange;
-    border: 1px solid orange;
+    background: #ffb000;
 }
-</style>
-</head>
 
-<body>
-
-<div class="hero">
-    <h1>Kababish Biryani</h1>
-    <p>📞 0307-0676579 | 📍 CMH Chowk Bahawalpur</p>
-</div>
-
-<!-- SLIDER -->
-<div class="slider">
-    <button class="arrow left" onclick="prev()">◀</button>
-    <div class="slides" id="slides">
-        <img src="https://images.unsplash.com/photo-1604908177522-402f03fb6f6d?auto=format&fit=crop&w=1200&q=90">
-        <img src="https://images.unsplash.com/photo-1617196032202-7cfe77b7b0b1?auto=format&fit=crop&w=1200&q=90">
-        <img src="https://images.unsplash.com/photo-1603078672960-4a062f6c28aa?auto=format&fit=crop&w=1200&q=90">
-        <img src="https://images.unsplash.com/photo-1571847149432-bfa317a72d09?auto=format&fit=crop&w=1200&q=90">
-    </div>
-    <button class="arrow right" onclick="next()">▶</button>
-</div>
-
-<!-- BIRYANI -->
-<h2 class="section-title"> Biryani Deals</h2>
-<div class="menu">
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1595564989782-dfc22b9f7ad1?auto=format&fit=crop&w=800&q=90">
-        <h3>Chicken Biryani</h3>
-        <p>Rs 450</p>
-        <button>Add to Cart</button>
-    </div>
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1604908177522-402f03fb6f6d?auto=format&fit=crop&w=800&q=90">
-        <h3>Beef Biryani</h3>
-        <p>Rs 500</p>
-        <button>Add to Cart</button>
-    </div>
-</div>
-
-<!-- CHINESE -->
-<h2 class="section-title"> Chinese</h2>
-<div class="menu">
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1617196032202-7cfe77b7b0b1?auto=format&fit=crop&w=800&q=90">
-        <h3>Fried Rice</h3>
-        <p>Rs 350</p>
-        <button>Add to Cart</button>
-    </div>
-   <div class="card">
-    <img src="https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56">
-    <h3>Chicken Chowmein</h3>
-    <p class="price">Rs 300</p>
-    <button onclick="addToCart('Chowmein',300)">Add</button>
-  </div>
-    <div class="card">
-    <img src="https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56">
-    <h4>Chicken Chowmein</h4>
-    <p class="price">Rs 600</p>
-    <button onclick="addToCart('Chowmein',600)">Add</button>
-  </div>
-   <div class="card">
-    <img src="https://images.unsplash.com/photo-1604908554161-8f3f1b6df8b5" alt="Manchurian">
-
-    <h5>Manchurian Half</h5>
-    <p class="price">Rs 200</p>
-
-    <button onclick="addToCart('Manchurian Half', 200)">
-        Add to Cart
-    </button>
-</div>
-   <div class="card">
-    <img src="https://images.unsplash.com/photo-1604908554161-8f3f1b6df8b5" alt="Manchurian">
-
-    <h6>Manchurian </h6>
-    <p class="price">Rs 400</p>
-
-    <button onclick="addToCart('Manchurian ', 400)">
-        Add to Cart
-    </button>
-</div>
-</div>
-
-<!-- SIDES -->
-<h2 class="section-title"> Sides</h2>
-<div class="menu">
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?auto=format&fit=crop&w=800&q=90">
-        <h3>French Fries</h3>
-        <p>Rs 180</p>
-        <button>Add to Cart</button>
-    </div>
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1562967916-eb82221dfb36?auto=format&fit=crop&w=800&q=90">
-        <h3>Raita</h3>
-        <p>Rs 50</p>
-        <button>Add to Cart</button>
-    </div>
-   <div class="card">
-    <img src="https://images.unsplash.com/photo-1606755962773-0fbc65c3c181?auto=format&fit=crop&w=800&q=90" alt="Shami Kabab">
-
-    <h3>Shami Kabab</h3>
-    <p class="price">Rs 50</p>
-
-    <button onclick="addToCart('Shami Kabab', 50)">
-        Add to Cart
-    </button>
-</div>
-
-</div>
-
-<!-- DRINKS -->
-<h2 class="section-title"> Drinks</h2>
-<div class="menu">
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1571847149432-bfa317a72d09?auto=format&fit=crop&w=800&q=90">
-        <h3>Coke</h3>
-        <p>Rs 100</p>
-        <button>Add to Cart</button>
-    </div>
-    <div class="card">
-        <img src="https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?auto=format&fit=crop&w=800&q=90">
-        <h3>Fresh Juice</h3>
-        <p>Rs 120</p>
-        <button>Add to Cart</button>
-    </div>
-</div>
-<!-- CUSTOMER INFO -->
-<h2>Customer Info</h2>
-
-<input type="text" id="name" placeholder="Enter your name" class="input">
-<input type="text" id="address" placeholder="Enter your address" class="input">
-
-<!-- CART -->
-<h2>Cart</h2>
-
-<div class="cart-box">
-    <ul id="cart"></ul>
-    <p><strong>Total: Rs <span id="total">0</span></strong></p>
-</div>
-
-<button onclick="placeOrder()">Place Order</button>
-<button onclick="goCheckout()">Go to Checkout</button>
-
-<style>
+/* CART */
 .input {
     width: 100%;
     padding: 10px;
@@ -260,90 +109,153 @@ button:hover {
     border: 2px solid orange;
     padding: 15px;
     border-radius: 12px;
-    margin-bottom: 15px;
 }
 
 .cart-box ul {
     list-style: none;
     padding: 0;
 }
-
-.cart-box li {
-    padding: 6px 0;
-    border-bottom: 1px solid #333;
-}
 </style>
+</head>
+
+<body>
+
+<img class="logo" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxASEBERERAVFhUXFRUVFxYPFRcSFRUYFRYXFhgYFxcY..." />
+
+<h1>Kababish Biryani </h1>
+
+<!-- SLIDER -->
+<div class="slider">
+    <div class="slides">
+        <img src="https://images.unsplash.com/photo-1600628422019-48c9c0c72c6f">
+        <img src="https://images.unsplash.com/photo-1625944525533-473f1a3f1e7f">
+        <img src="https://images.unsplash.com/photo-1627662236973-4fd835f277c4">
+    </div>
+</div>
+
+<!-- BIRYANI -->
+<div class="section">
+<h2> Biryani Deals</h2>
+<div class="items">
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1631515242808-497c3fbd3972">
+        <p>Chicken Biryani</p>
+        <p>Rs 350</p>
+        <button onclick="addToCart('Chicken Biryani',350)">Add</button>
+    </div>
+
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1625944230945-1b7ddc59b3c3">
+        <p>Beef Biryani</p>
+        <p>Rs 400</p>
+        <button onclick="addToCart('Beef Biryani',400)">Add</button>
+    </div>
+</div>
+</div>
+
+<!-- CHINESE -->
+<div class="section">
+<h2> Chinese</h2>
+<div class="items">
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1604908177522-402e7e3a1f3c">
+        <p>Chicken Fried Rice</p>
+        <p>Rs 450</p>
+        <button onclick="addToCart('Fried Rice',450)">Add</button>
+    </div>
+
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1617196034796-73f1c94c6bbf">
+        <p>Chow Mein</p>
+        <p>Rs 420</p>
+        <button onclick="addToCart('Chow Mein',420)">Add</button>
+    </div>
+</div>
+</div>
+
+<!-- DRINKS -->
+<div class="section">
+<h2> Drinks</h2>
+<div class="items">
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e">
+        <p>Cold Drink</p>
+        <p>Rs 120</p>
+        <button onclick="addToCart('Cold Drink',120)">Add</button>
+    </div>
+
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b">
+        <p>Mineral Water</p>
+        <p>Rs 60</p>
+        <button onclick="addToCart('Water',60)">Add</button>
+    </div>
+   <h3 class="section-title">Sides</h3>
+
+<div class="menu" id="sides">
+
+    <div class="card">
+        <img 
+            src="data:image/jpeg;base64,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
+<h3>Shami Kabab</h3>
+        <p class="price">Rs 50</p>
+        <button onclick="addToCart('Shami Kabab', 50)">Add to Cart</button>
+    </div>
+</div>
+</div>
+
+<!-- CUSTOMER INFO -->
+<h2>Customer Info</h2>
+<input class="input" id="name" placeholder="Your Name">
+<input class="input" id="address" placeholder="Address">
+
+<!-- CART -->
+<h2>Cart</h2>
+<div class="cart-box">
+    <ul id="cart"></ul>
+    <p><strong>Total: Rs <span id="total">0</span></strong></p>
+</div>
+
+<button onclick="placeOrder()">Place Order</button>
 
 <script>
 let cart = [];
 let total = 0;
 
 function addToCart(item, price) {
-
-    cart.push({ item, price });
+    cart.push({item, price});
     total += price;
 
     const li = document.createElement("li");
     li.textContent = item + " — Rs " + price;
-
     document.getElementById("cart").appendChild(li);
     document.getElementById("total").innerText = total;
 }
 
 function placeOrder() {
-
     const name = document.getElementById("name").value.trim();
     const address = document.getElementById("address").value.trim();
 
-    if (cart.length === 0) {
-        alert("Your cart is empty!");
+    if(cart.length === 0){
+        alert("Cart is empty!");
         return;
     }
 
-    if (name === "" || address === "") {
-        alert("Please enter name and address");
+    if(name === "" || address === ""){
+        alert("Enter name and address");
         return;
     }
 
     alert(
-        "✅ Order Placed Successfully!\n\n" +
+        "✅ Order Placed\n\n" +
         "Name: " + name + "\n" +
         "Address: " + address + "\n" +
-        "Total Bill: Rs " + total
+        "Total: Rs " + total
     );
-}
-
-function goCheckout() {
-
-    if (cart.length === 0) {
-        alert("Add items first!");
-        return;
-    }
-
-    localStorage.setItem("cart", JSON.stringify(cart));
-    localStorage.setItem("total", total);
-
-    window.location.href = "checkout.html";
-}
-</script>
-
-<script>
-let index = 0;
-
-function next() {
-    index++;
-    if (index > 3) index = 0;
-    document.getElementById("slides").style.transform =
-        "translateX(" + (-index * 100) + "%)";
-}
-
-function prev() {
-    index--;
-    if (index < 0) index = 3;
-    document.getElementById("slides").style.transform =
-        "translateX(" + (-index * 100) + "%)";
 }
 </script>
 
 </body>
 </html>
+
+
